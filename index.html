@@ -3,97 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic World</title>
+    <title>DeenPoint — Islamic World</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="artucle.css">
-
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <style>
-        
-    </style>
-
 </head>
 <body>
-    <!-- Navbar -->
-    <header class="navbar">
-        <div class="logo">DeenPoint</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="artice.html">Article</a>
-            <a href="qran.html">Quran</a>
-            <a href="hadith.html">Hadith</a>
-        </nav>
-    </header>
 
-    <!-- Header
-    <header>
-        <div class="logo">DeenPoint</div>
-        <nav>
-            <a href="./index.html">Home</a>
-            <a href="./qran.html">Quran</a>
-            <a href="./Hadith.html">Hadith</a>
-            <a href="./Artice.html">Articles</a>
-        
-        </nav>
-    </header> -->
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-kaaba me-2"></i>DeenPoint
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-lg-3">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="qran.html">Quran</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hadith.html">Hadith</a></li>
+                    <li class="nav-item"><a class="nav-link" href="artice.html">Articles</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Welcome to the Deen Point</h1>
-        <p>Discover the beauty of Islam — Quran, Hadith, History, and true guidance.</p>
-        <a class="btn" href="qran.html">Listen Quran Surah Wise</a>
-    </section>
-
-    <!-- Features -->
-    <section class="features">
-        <div class="box">
-            <h3><a href="./qran.html">Quran</a></h3>
-            <p>Read and listen to the Holy Quran</p>
-        </div>
-        <div class="boxy">
-            <h3><a href="./Hadith.html">Hadith</a></h3>
-            <p>Authentic Hadith collections including Bukhari and Muslim.</p>
-        </div>
-        <div class="boxz">
-            <h3><a href="artice.html">Islamic Articles</a></h3>
-            <p>Read about Islam.</p>
+        <div class="container">
+            <h1>Welcome to DeenPoint</h1>
+            <p>Discover the beauty of Islam — Quran, Hadith, Islamic History, and true spiritual guidance.</p>
+            <a class="btn btn-custom shadow-sm" href="qran.html">
+                <i class="fa-solid fa-headphones me-2"></i>Listen Quran Surah Wise
+            </a>
         </div>
     </section>
 
-     <footer id="footer--">
-        © 2025 Islamic World | All Rights Reserved
+    <!-- Core Features Section -->
+    <section class="py-5 container">
+        <h2 class="text-center section-title">Explore Core Pillars</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card text-center position-relative">
+                    <div class="feature-icon"><i class="fa-solid fa-book-quran"></i></div>
+                    <h3><a href="qran.html" class="text-dark text-decoration-none stretched-link">Quran Kareem</a></h3>
+                    <p class="text-muted small">Read verses with clear translations and listen to high-quality audio recitations.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center position-relative">
+                    <div class="feature-icon"><i class="fa-solid fa-scroll"></i></div>
+                    <h3><a href="hadith.html" class="text-dark text-decoration-none stretched-link">Hadith Collections</a></h3>
+                    <p class="text-muted small">Explore authentic Hadith collections including Sahih Al-Bukhari and Sahih Muslim.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center position-relative">
+                    <div class="feature-icon"><i class="fa-solid fa-feather-pointed"></i></div>
+                    <h3><a href="artice.html" class="text-dark text-decoration-none stretched-link">Islamic Articles</a></h3>
+                    <p class="text-muted small">Read well-researched articles on Islamic history, lifestyle, and spiritual growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Grid Section -->
+    <section class="py-5 bg-white border-top border-bottom">
+        <div class="container">
+            <h2 class="text-center section-title">Learning Hub & Topics</h2>
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="p-3 text-center border rounded-3 h-100 bg-light">
+                        <i class="fa-solid fa-hands-praying fa-2x text-success mb-2"></i>
+                        <h6 class="fw-bold mb-1">Duas & Azkar</h6>
+                        <small class="text-muted">Daily authentic supplications</small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="p-3 text-center border rounded-3 h-100 bg-light">
+                        <i class="fa-solid fa-moon fa-2x text-success mb-2"></i>
+                        <h6 class="fw-bold mb-1">Ramadan Guide</h6>
+                        <small class="text-muted">Fasting rules & spiritual tips</small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="p-3 text-center border rounded-3 h-100 bg-light">
+                        <i class="fa-solid fa-landmark fa-2x text-success mb-2"></i>
+                        <h6 class="fw-bold mb-1">Islamic History</h6>
+                        <small class="text-muted">Seerah & lives of Prophets</small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="p-3 text-center border rounded-3 h-100 bg-light">
+                        <i class="fa-solid fa-scale-balanced fa-2x text-success mb-2"></i>
+                        <h6 class="fw-bold mb-1">Jurisprudence</h6>
+                        <small class="text-muted">Basics of Islamic Fiqh</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Contact Section -->
+    <section class="contact-pro">
+        <div class="container">
+            <div class="contact-wrapper row g-0">
+                <div class="col-lg-5 contact-left d-flex flex-column justify-content-between">
+                    <div>
+                        <h2>Get in Touch 🤍</h2>
+                        <p>Have questions about Islam, Quran, or Hadith? Feel free to reach out to us anytime.</p>
+                    </div>
+                    <div class="contact-info mt-4 mt-lg-0">
+                        <div class="mb-2"><i class="fa-solid fa-location-dot me-2"></i> Islamic World</div>
+                        <div class="mb-2"><i class="fa-solid fa-envelope me-2"></i> DeenPoint@gmail.com</div>
+                        <div><i class="fa-solid fa-phone me-2"></i> +92 3XX XXXXXXX</div>
+                    </div>
+                </div>
+                <div class="col-lg-7 contact-right">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Father's Name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" placeholder="Contact Number">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Email Address" required>
+                            </div>
+                        </div>
+                        <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+                        <button type="submit" class="w-100">Send Message ✨</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; 2026 DeenPoint (Islamic World) | All Rights Reserved</p>
+        </div>
     </footer>
- <section class="contact-pro">
-  <div class="contact-box">
-    
-    <div class="contact-left">
-      <h2>Get in Touch 🤍</h2>
-      <p>
-        Have questions about Islam, Quran or Hadith?  
-        Feel free to reach out. We are here to help you.
-      </p>
 
-      <div class="contact-info">
-        <div>📍 Islamic World</div>
-        <div>📧 DeenPoint@gmail.com</div>
-        <div>📞 +92 3XX XXXXXXX</div>
-      </div>
-    </div>
-
-    <div class="contact-right">
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="text" placeholder="Father Name">
-        <input type="tel" placeholder="Contact Number">
-        <input type="email" placeholder="Email Address" required>
-        <textarea rows="4" placeholder="Your Message"></textarea>
-        <button type="submit">Send Message ✨</button>
-      </form>
-    </div>
-
-  </div>
-</section>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
