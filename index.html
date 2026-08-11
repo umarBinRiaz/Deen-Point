@@ -3,167 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeenPoint — Islamic World</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap 5 CSS -->
+    <title>DeenPoint — Your Islamic Knowledge Hub</title>
+    <meta name="description" content="DeenPoint brings together the Holy Quran with audio, authentic Hadith and well-researched Islamic articles — all in one beautiful place.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Navigation Header -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg dp-navbar">
+        <div class="container-dp">
             <a class="navbar-brand" href="index.html">
-                <i class="fa-solid fa-kaaba me-2"></i>DeenPoint
+                <span class="brand-mark"><i class="fa-solid fa-kaaba"></i></span>DeenPoint
             </a>
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-lg-center gap-lg-3">
+                <ul class="navbar-nav align-items-lg-center gap-lg-2">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="qran.html">Quran</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quran.html">Quran</a></li>
                     <li class="nav-item"><a class="nav-link" href="hadith.html">Hadith</a></li>
-                    <li class="nav-item"><a class="nav-link" href="artice.html">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn-dp btn-dp-primary" href="quran.html"><i class="fa-solid fa-headphones"></i> Listen Quran</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Welcome to DeenPoint</h1>
-            <p>Discover the beauty of Islam — Quran, Hadith, Islamic History, and true spiritual guidance.</p>
-            <a class="btn btn-custom shadow-sm" href="qran.html">
-                <i class="fa-solid fa-headphones me-2"></i>Listen Quran Surah Wise
-            </a>
+    <header class="hero">
+        <div class="container-dp">
+            <span class="eyebrow" style="color:var(--gold-soft);background:rgba(255,255,255,.12);">۞ Peace be upon you</span>
+            <h1>Welcome to <span class="text-gold">DeenPoint</span></h1>
+            <p class="lead">Discover the beauty of Islam — the Holy Quran, authentic Hadith and timeless knowledge, presented with clarity for every Muslim.</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a class="btn-dp btn-dp-primary" href="quran.html"><i class="fa-solid fa-book-quran"></i> Explore the Quran</a>
+                <a class="btn-dp btn-dp-outline" href="articles.html"><i class="fa-solid fa-feather-pointed"></i> Read Articles</a>
+            </div>
+            <div class="hero-badges">
+                <span><i class="fa-solid fa-book me-2"></i>114 Surahs</span>
+                <span><i class="fa-solid fa-scroll me-2"></i>100 Hadith</span>
+                <span><i class="fa-solid fa-pen-nib me-2"></i>25 Articles</span>
+                <span><i class="fa-solid fa-headphones me-2"></i>Full Audio</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="stats-band">
+        <div class="container-dp">
+            <div class="row g-3">
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card reveal"><div class="stat-num">114<small>+</small></div><div class="stat-label">Surahs of the Quran</div></div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card reveal"><div class="stat-num">6,236</div><div class="stat-label">Ayat Revealed</div></div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card reveal"><div class="stat-num">100</div><div class="stat-label">Authentic Hadith</div></div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card reveal"><div class="stat-num">25</div><div class="stat-label">Deep-Dive Articles</div></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Core Features Section -->
-    <section class="py-5 container">
-        <h2 class="text-center section-title">Explore Core Pillars</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="feature-card text-center position-relative">
-                    <div class="feature-icon"><i class="fa-solid fa-book-quran"></i></div>
-                    <h3><a href="qran.html" class="text-dark text-decoration-none stretched-link">Quran Kareem</a></h3>
-                    <p class="text-muted small">Read verses with clear translations and listen to high-quality audio recitations.</p>
-                </div>
+    <section class="section">
+        <div class="container-dp">
+            <div class="text-center mb-5">
+                <span class="eyebrow"><i class="fa-solid fa-layer-group"></i> Core Pillars</span>
+                <h2 class="section-title">Explore the Heart of Islam</h2>
+                <p class="section-sub">Everything you need to learn, reflect and grow — carefully organised in one place.</p>
             </div>
-            <div class="col-md-4">
-                <div class="feature-card text-center position-relative">
-                    <div class="feature-icon"><i class="fa-solid fa-scroll"></i></div>
-                    <h3><a href="hadith.html" class="text-dark text-decoration-none stretched-link">Hadith Collections</a></h3>
-                    <p class="text-muted small">Explore authentic Hadith collections including Sahih Al-Bukhari and Sahih Muslim.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-card text-center position-relative">
-                    <div class="feature-icon"><i class="fa-solid fa-feather-pointed"></i></div>
-                    <h3><a href="artice.html" class="text-dark text-decoration-none stretched-link">Islamic Articles</a></h3>
-                    <p class="text-muted small">Read well-researched articles on Islamic history, lifestyle, and spiritual growth.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Topics Grid Section -->
-    <section class="py-5 bg-white border-top border-bottom">
-        <div class="container">
-            <h2 class="text-center section-title">Learning Hub & Topics</h2>
             <div class="row g-4">
-                <div class="col-md-3 col-6">
-                    <div class="p-3 text-center border rounded-3 h-100 bg-light">
-                        <i class="fa-solid fa-hands-praying fa-2x text-success mb-2"></i>
-                        <h6 class="fw-bold mb-1">Duas & Azkar</h6>
-                        <small class="text-muted">Daily authentic supplications</small>
+                <div class="col-md-4">
+                    <div class="feature-card reveal">
+                        <div class="feature-icon"><i class="fa-solid fa-book-quran"></i></div>
+                        <h3>The Noble Quran</h3>
+                        <p>Browse all 114 Surahs, search by name or Juz, and listen to beautiful high-quality recitation with a one-tap player.</p>
+                        <a class="card-link" href="quran.html">Open the Quran <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
-                    <div class="p-3 text-center border rounded-3 h-100 bg-light">
-                        <i class="fa-solid fa-moon fa-2x text-success mb-2"></i>
-                        <h6 class="fw-bold mb-1">Ramadan Guide</h6>
-                        <small class="text-muted">Fasting rules & spiritual tips</small>
+                <div class="col-md-4">
+                    <div class="feature-card reveal">
+                        <div class="feature-icon"><i class="fa-solid fa-scroll"></i></div>
+                        <h3>Hadith Collection</h3>
+                        <p>A curated collection of 100 authentic hadith with original Arabic text and Urdu translation, filtered by topic.</p>
+                        <a class="card-link" href="hadith.html">Read the Hadith <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
-                    <div class="p-3 text-center border rounded-3 h-100 bg-light">
-                        <i class="fa-solid fa-landmark fa-2x text-success mb-2"></i>
-                        <h6 class="fw-bold mb-1">Islamic History</h6>
-                        <small class="text-muted">Seerah & lives of Prophets</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="p-3 text-center border rounded-3 h-100 bg-light">
-                        <i class="fa-solid fa-scale-balanced fa-2x text-success mb-2"></i>
-                        <h6 class="fw-bold mb-1">Jurisprudence</h6>
-                        <small class="text-muted">Basics of Islamic Fiqh</small>
+                <div class="col-md-4">
+                    <div class="feature-card reveal">
+                        <div class="feature-icon"><i class="fa-solid fa-feather-pointed"></i></div>
+                        <h3>Islamic Knowledge</h3>
+                        <p>Twenty-five well-researched articles on theology, history, worship, family life and spiritual growth.</p>
+                        <a class="card-link" href="articles.html">Explore Articles <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Professional Contact Section -->
-    <section class="contact-pro">
-        <div class="container">
-            <div class="contact-wrapper row g-0">
-                <div class="col-lg-5 contact-left d-flex flex-column justify-content-between">
+    <section class="section section-alt">
+        <div class="container-dp">
+            <div class="text-center mb-5">
+                <span class="eyebrow"><i class="fa-solid fa-hands-praying"></i> Daily Light</span>
+                <h2 class="section-title">Hadith of the Day</h2>
+            </div>
+            <div class="daily-hadith reveal" id="dailyHadith">
+                <div class="hadith-arabic" id="dhadith-arabic"></div>
+                <div class="hadith-urdu" id="dhadith-urdu"></div>
+                <div class="hadith-ref" id="dhadith-ref"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container-dp">
+            <div class="text-center mb-5">
+                <span class="eyebrow"><i class="fa-solid fa-compass"></i> Learning Hub</span>
+                <h2 class="section-title">Topics Worth Exploring</h2>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-3 col-6"><div class="topic-chip reveal"><i class="fa-solid fa-hands-praying"></i><h6>Duas &amp; Azkar</h6><small>Daily supplications</small></div></div>
+                <div class="col-md-3 col-6"><div class="topic-chip reveal"><i class="fa-solid fa-moon"></i><h6>Ramadan Guide</h6><small>Fasting &amp; worship</small></div></div>
+                <div class="col-md-3 col-6"><div class="topic-chip reveal"><i class="fa-solid fa-landmark"></i><h6>Islamic History</h6><small>Seerah &amp; civilisations</small></div></div>
+                <div class="col-md-3 col-6"><div class="topic-chip reveal"><i class="fa-solid fa-scale-balanced"></i><h6>Jurisprudence</h6><small>Basics of Fiqh</small></div></div>
+                <div class="col-md-3 col-6"><div class="topic-chip reveal"><i class="fa-solid fa-user-check"></i><h6>Tawheed</h6><small>Pure monotheism</small></div></div>
+                <div class="col-md-3 col-6"><div class="topic-chip reveal"><i class="fa-solid fa-heart"></i><h6>Patience &amp; Gratitude</h6><small>Spiritual growth</small></div></div>
+                <div class="col-md-3 col-6"><div class="topic-chip reveal"><i class="fa-solid fa-people-group"></i><h6>Family &amp; Society</h6><small>Rights &amp; duties</small></div></div>
+                <div class="col-md-3 col-6"><div class="topic-chip reveal"><i class="fa-solid fa-book-open-reader"></i><h6>Quran Study</h6><small>Reflection &amp; meaning</small></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-cream" id="latestArticles">
+        <div class="container-dp">
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
+                <div>
+                    <span class="eyebrow"><i class="fa-solid fa-newspaper"></i> Fresh Reads</span>
+                    <h2 class="section-title mb-0">Latest Articles</h2>
+                </div>
+                <a class="btn-dp btn-dp-ghost" href="articles.html">View all 25 <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="row g-4" id="homeArticles"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container-dp">
+            <div class="contact-panel reveal">
+                <div class="contact-info-pane">
                     <div>
-                        <h2>Get in Touch 🤍</h2>
-                        <p>Have questions about Islam, Quran, or Hadith? Feel free to reach out to us anytime.</p>
+                        <h2>Get in Touch</h2>
+                        <p>Have a question about Islam, the Quran or the Hadith? We would love to hear from you.</p>
                     </div>
-                    <div class="contact-info mt-4 mt-lg-0">
-                        <div class="mb-2"><i class="fa-solid fa-location-dot me-2"></i> Islamic World</div>
-                        <div class="mb-2"><i class="fa-solid fa-envelope me-2"></i> DeenPoint@gmail.com</div>
-                        <div><i class="fa-solid fa-phone me-2"></i> +92 3XX XXXXXXX</div>
+                    <div class="contact-meta">
+                        <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Islamic World</div>
+                        <div class="meta-item"><i class="fa-solid fa-envelope"></i> DeenPoint@gmail.com</div>
+                        <div class="meta-item"><i class="fa-solid fa-phone"></i> +92 3XX XXXXXXX</div>
                     </div>
                 </div>
-                <div class="col-lg-7 contact-right">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Father's Name">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="tel" class="form-control" placeholder="Contact Number">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" placeholder="Email Address" required>
+                <div class="contact-form-pane">
+                    <form id="contactForm" onsubmit="return handleContact(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Your Name" required></div>
+                            <div class="col-md-6"><input type="email" class="form-control" placeholder="Email Address" required></div>
+                            <div class="col-12"><input type="tel" class="form-control" placeholder="Contact Number (optional)"></div>
+                            <div class="col-12"><textarea class="form-control" rows="4" placeholder="Your Message" required></textarea></div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-dp btn-dp-green w-100"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
                             </div>
                         </div>
-                        <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
-                        <button type="submit" class="w-100">Send Message ✨</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p class="mb-0">&copy; 2026 DeenPoint (Islamic World) | All Rights Reserved</p>
+    <footer class="dp-footer">
+        <div class="container-dp">
+            <div class="row g-4 pb-4">
+                <div class="col-lg-4">
+                    <a class="footer-brand" href="index.html"><i class="fa-solid fa-kaaba me-2"></i>DeenPoint</a>
+                    <p class="mt-3 mb-0" style="color:rgba(255,255,255,.72);">A trusted Islamic knowledge hub bringing together the Quran, authentic Hadith and scholarly articles for everyday learning.</p>
+                    <div class="footer-social mt-4">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6>Explore</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="quran.html">Quran</a></li>
+                        <li><a href="hadith.html">Hadith</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h6>Learning</h6>
+                    <ul class="footer-links">
+                        <li><a href="quran.html">Surah-wise Audio</a></li>
+                        <li><a href="hadith.html">Daily Hadith</a></li>
+                        <li><a href="articles.html">Knowledge Base</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6>Contact</h6>
+                    <ul class="footer-links">
+                        <li><i class="fa-solid fa-envelope me-2"></i>DeenPoint@gmail.com</li>
+                        <li><i class="fa-solid fa-location-dot me-2"></i>Islamic World</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">© <span id="year">2026</span> DeenPoint — Islamic World | All Rights Reserved</div>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="data/hadith.js"></script>
+    <script src="data/articles.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        const dayHadith = hadithsDB[(new Date().getDate() + new Date().getMonth()) % hadithsDB.length];
+        if (dayHadith) {
+            document.getElementById("dhadith-arabic").textContent = dayHadith.arabic;
+            document.getElementById("dhadith-urdu").textContent = dayHadith.urdu;
+            document.getElementById("dhadith-ref").textContent = "— " + dayHadith.source;
+        }
+
+        const homeGrid = document.getElementById("homeArticles");
+        if (homeGrid && typeof articlesDB !== "undefined") {
+            articlesDB.slice(0, 6).forEach((a, i) => {
+                const col = document.createElement("div");
+                col.className = "col-md-4";
+                col.innerHTML = `
+                    <div class="article-card reveal">
+                        <div class="article-meta">
+                            <span class="pill-badge">${a.category}</span>
+                            <span class="pill-badge"><i class="fa-regular fa-clock me-1"></i>${a.readTime}</span>
+                        </div>
+                        <h3>${a.title.replace(/^\d+\.\s*/, "")}</h3>
+                        <p>${a.excerpt}</p>
+                        <div class="article-foot">
+                            <small><i class="fa-solid fa-file-lines me-1"></i>${a.wordCount}</small>
+                            <a class="card-link" href="articles.html#a${a.id}">Read <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>`;
+                homeGrid.appendChild(col);
+            });
+            document.querySelectorAll("#homeArticles .reveal").forEach(el => el.classList.add("visible"));
+        }
+
+        function handleContact(e) {
+            e.preventDefault();
+            showToast("JazakAllah Khair! Your message has been noted.");
+            e.target.reset();
+            return false;
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles — Islamic Knowledge Hub | DeenPoint</title>
+    <meta name="description" content="25 well-researched articles on Islamic theology, history, worship, family life and spiritual growth.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg dp-navbar">
+        <div class="container-dp">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-mark"><i class="fa-solid fa-kaaba"></i></span>DeenPoint
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quran.html">Quran</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hadith.html">Hadith</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="articles.html">Articles</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="container-dp">
+            <div class="breadcrumb-dp"><a href="index.html">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Articles</span></div>
+            <h1><i class="fa-solid fa-feather-pointed me-2"></i>Islamic <span class="text-gold">Knowledge Hub</span></h1>
+            <p>"The seeking of knowledge is an obligation upon every Muslim." — Sunan Ibn Majah</p>
+        </div>
+    </header>
+
+    <section class="section pt-5">
+        <div class="container-dp">
+
+            <div id="libraryView">
+                <div class="row g-4 mb-4 align-items-center">
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" id="articleSearch" placeholder="Search 25 articles..." oninput="renderArticles()">
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="filter-chips justify-content-start" id="articleFilters"></div>
+                    </div>
+                </div>
+                <div class="row g-4" id="articleGrid"></div>
+            </div>
+
+            <div id="readerView" style="display:none;">
+                <button class="back-btn mb-4" onclick="closeReader()"><i class="fa-solid fa-arrow-left"></i> All Articles</button>
+                <div class="card border-0 shadow-sm rounded-4 bg-white p-4 p-md-5 article-reader">
+                    <header class="border-bottom pb-4 mb-4">
+                        <div class="d-flex flex-wrap align-items-center gap-2 mb-3" id="readerMeta"></div>
+                        <h1 id="readerTitle"></h1>
+                    </header>
+                    <article class="article-body" id="readerBody"></article>
+                    <div class="mt-5 pt-4 border-top d-flex flex-wrap justify-content-between align-items-center gap-3">
+                        <button class="back-btn" onclick="closeReader()"><i class="fa-solid fa-arrow-left"></i> Back to all articles</button>
+                        <span class="text-muted small"><i class="fa-solid fa-book-open me-1"></i>DeenPoint Knowledge Hub</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="dp-footer">
+        <div class="container-dp">
+            <div class="row g-4 pb-4">
+                <div class="col-lg-4">
+                    <a class="footer-brand" href="index.html"><i class="fa-solid fa-kaaba me-2"></i>DeenPoint</a>
+                    <p class="mt-3 mb-0" style="color:rgba(255,255,255,.72);">A trusted Islamic knowledge hub bringing together the Quran, authentic Hadith and scholarly articles for everyday learning.</p>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6>Explore</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="quran.html">Quran</a></li>
+                        <li><a href="hadith.html">Hadith</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h6>Learning</h6>
+                    <ul class="footer-links">
+                        <li><a href="quran.html">Surah-wise Audio</a></li>
+                        <li><a href="hadith.html">Daily Hadith</a></li>
+                        <li><a href="articles.html">Knowledge Base</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6>Contact</h6>
+                    <ul class="footer-links">
+                        <li><i class="fa-solid fa-envelope me-2"></i>DeenPoint@gmail.com</li>
+                        <li><i class="fa-solid fa-location-dot me-2"></i>Islamic World</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">© <span id="year">2026</span> DeenPoint — Islamic World | All Rights Reserved</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="data/articles.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let activeCat = "All";
+
+        const categories = ["All", ...new Set(articlesDB.map(a => a.category))];
+
+        function renderFilters() {
+            const wrap = document.getElementById("articleFilters");
+            wrap.innerHTML = categories.map((c, i) =>
+                `<button class="filter-chip ${c === activeCat ? "active" : ""}" data-cat="${i}" type="button">${c}</button>`
+            ).join("");
+        }
+
+        document.getElementById("articleFilters").addEventListener("click", (e) => {
+            const btn = e.target.closest(".filter-chip");
+            if (!btn) return;
+            activeCat = categories[Number(btn.dataset.cat)];
+            renderFilters();
+            renderArticles();
+        });
+
+        function renderArticles() {
+            const q = document.getElementById("articleSearch").value.trim().toLowerCase();
+            const grid = document.getElementById("articleGrid");
+            grid.innerHTML = "";
+
+            const filtered = articlesDB.filter(a => {
+                const okCat = activeCat === "All" || a.category === activeCat;
+                const okSearch = !q ||
+                    a.title.toLowerCase().includes(q) ||
+                    a.category.toLowerCase().includes(q) ||
+                    a.excerpt.toLowerCase().includes(q);
+                return okCat && okSearch;
+            });
+
+            if (!filtered.length) {
+                grid.innerHTML = `
+                    <div class="col-12">
+                        <div class="empty-state">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <h4>No articles found</h4>
+                            <p class="mb-0">Try a different keyword or category.</p>
+                        </div>
+                    </div>`;
+                return;
+            }
+
+            filtered.forEach(a => {
+                const col = document.createElement("div");
+                col.className = "col-md-6 col-xl-4";
+                col.innerHTML = `
+                    <div class="article-card reveal" onclick="openReader(${a.id})" role="button" tabindex="0"
+                         onkeydown="if(event.key==='Enter')openReader(${a.id})">
+                        <div class="article-meta">
+                            <span class="pill-badge">${a.category}</span>
+                            <span class="pill-badge"><i class="fa-regular fa-clock me-1"></i>${a.readTime}</span>
+                        </div>
+                        <h3>${a.title.replace(/^\d+\.\s*/, "")}</h3>
+                        <p>${a.excerpt}</p>
+                        <div class="article-foot">
+                            <small><i class="fa-solid fa-file-lines me-1"></i>${a.wordCount}</small>
+                            <span class="card-link">Read Article <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>`;
+                grid.appendChild(col);
+            });
+            document.querySelectorAll("#articleGrid .reveal").forEach(el => el.classList.add("visible"));
+        }
+
+        function openReader(id) {
+            const a = articlesDB.find(x => x.id === id);
+            if (!a) return;
+            document.getElementById("readerMeta").innerHTML = `
+                <span class="pill-badge">${a.category}</span>
+                <span class="pill-badge"><i class="fa-regular fa-clock me-1"></i>${a.readTime}</span>
+                <span class="pill-badge"><i class="fa-solid fa-file-lines me-1"></i>${a.wordCount}</span>
+                <span class="pill-badge"><i class="fa-solid fa-hashtag me-1"></i>Article ${a.id}</span>`;
+            document.getElementById("readerTitle").textContent = a.title.replace(/^\d+\.\s*/, "");
+            document.getElementById("readerBody").innerHTML = a.content;
+            document.getElementById("libraryView").style.display = "none";
+            document.getElementById("readerView").style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            history.replaceState(null, "", "#a" + a.id);
+        }
+
+        function closeReader() {
+            document.getElementById("readerView").style.display = "none";
+            document.getElementById("libraryView").style.display = "block";
+            history.replaceState(null, "", window.location.pathname);
+        }
+
+        renderFilters();
+        renderArticles();
+
+        const hashMatch = location.hash.match(/^#a(\d+)$/);
+        if (hashMatch) openReader(Number(hashMatch[1]));
+    </script>
+</body>
+</html>
