@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Salah Tracker | DeenPoint</title>
+
+    <link rel="stylesheet" href="./css/salah.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="./index.html" class="brand">
+                <span class="brand-icon">▰</span>
+                <span>Deen<span>Point</span></span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="./index.html">
+                    Home
+                </a>
+
+                <a href="./quran.html">
+                    Quran
+                </a>
+
+                <a href="./hadith.html">
+                    Hadith
+                </a>
+
+                <a href="./articles.html">
+                    Articles
+                </a>
+
+                <a href="./salah.html" class="active">
+                    Salah Tracker
+                </a>
+
+                <a href="./quran.html" class="listen-btn">
+                    <span>◉</span>
+                    Listen Quran
+                </a>
+
+            </nav>
+
+            <button class="mobile-menu" onclick="toggleMenu()">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="salah-page">
+
+        <!-- PAGE INTRO -->
+        <section class="page-intro">
+
+            <div class="intro-icon">
+                🕌
+            </div>
+
+            <div>
+                <span class="eyebrow">
+                    DEENPOINT • DAILY WORSHIP
+                </span>
+
+                <h1>
+                    Salah <span>Tracker</span>
+                </h1>
+
+                <p>
+                    Keep track of your daily prayers and stay consistent
+                    with your worship.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- TODAY'S SALAH -->
+        <section class="glass-card">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="section-label">
+                        TODAY
+                    </span>
+
+                    <h2>Today's Salah</h2>
+
+                    <p id="todayDate"></p>
+                </div>
+
+                <div class="percentage-circle">
+                    <span id="progressPercent">0%</span>
+                </div>
+
+            </div>
+
+
+            <div class="salah-list">
+
+                <!-- FAJR -->
+                <div class="salah-card" data-salah="Fajr">
+
+                    <div class="salah-left">
+
+                        <div class="prayer-icon fajr">
+                            🌅
+                        </div>
+
+                        <div>
+                            <h3>Fajr</h3>
+                            <p>2 Rak'ah Fard</p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="check-btn"
+                        onclick="toggleSalah('Fajr')"
+                    >
+                        <span id="check-Fajr">○</span>
+                    </button>
+
+                </div>
+
+
+                <!-- DHUHR -->
+                <div class="salah-card" data-salah="Dhuhr">
+
+                    <div class="salah-left">
+
+                        <div class="prayer-icon dhuhr">
+                            ☀
+                        </div>
+
+                        <div>
+                            <h3>Dhuhr</h3>
+                            <p>4 Rak'ah Fard</p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="check-btn"
+                        onclick="toggleSalah('Dhuhr')"
+                    >
+                        <span id="check-Dhuhr">○</span>
+                    </button>
+
+                </div>
+
+
+                <!-- ASR -->
+                <div class="salah-card" data-salah="Asr">
+
+                    <div class="salah-left">
+
+                        <div class="prayer-icon asr">
+                            ☀
+                        </div>
+
+                        <div>
+                            <h3>Asr</h3>
+                            <p>4 Rak'ah Fard</p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="check-btn"
+                        onclick="toggleSalah('Asr')"
+                    >
+                        <span id="check-Asr">○</span>
+                    </button>
+
+                </div>
+
+
+                <!-- MAGHRIB -->
+                <div class="salah-card" data-salah="Maghrib">
+
+                    <div class="salah-left">
+
+                        <div class="prayer-icon maghrib">
+                            🌇
+                        </div>
+
+                        <div>
+                            <h3>Maghrib</h3>
+                            <p>3 Rak'ah Fard</p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="check-btn"
+                        onclick="toggleSalah('Maghrib')"
+                    >
+                        <span id="check-Maghrib">○</span>
+                    </button>
+
+                </div>
+
+
+                <!-- ISHA -->
+                <div class="salah-card" data-salah="Isha">
+
+                    <div class="salah-left">
+
+                        <div class="prayer-icon isha">
+                            🌙
+                        </div>
+
+                        <div>
+                            <h3>Isha</h3>
+                            <p>4 Rak'ah Fard</p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="check-btn"
+                        onclick="toggleSalah('Isha')"
+                    >
+                        <span id="check-Isha">○</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+            <div class="progress-panel">
+
+                <div class="progress-header">
+
+                    <span>
+                        Today's Progress
+                    </span>
+
+                    <strong id="progressText">
+                        0 / 5
+                    </strong>
+
+                </div>
+
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+
+                <div class="progress-footer">
+
+                    <span id="completedText">
+                        0 Completed
+                    </span>
+
+                    <span id="remainingText">
+                        5 Remaining
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QAZA -->
+        <section class="glass-card qaza-section">
+
+            <div class="section-header simple">
+
+                <div>
+                    <span class="section-label">
+                        PERSONAL RECORD
+                    </span>
+
+                    <h2>Qaza Salah Calculator</h2>
+
+                    <p>
+                        Keep a personal record of missed prayers.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="qaza-grid">
+
+                <div class="qaza-card">
+                    <span>Fajr</span>
+                    <input
+                        type="number"
+                        id="qazaFajr"
+                        min="0"
+                        value="0"
+                        onchange="calculateQaza()"
+                    >
+                </div>
+
+                <div class="qaza-card">
+                    <span>Dhuhr</span>
+                    <input
+                        type="number"
+                        id="qazaDhuhr"
+                        min="0"
+                        value="0"
+                        onchange="calculateQaza()"
+                    >
+                </div>
+
+                <div class="qaza-card">
+                    <span>Asr</span>
+                    <input
+                        type="number"
+                        id="qazaAsr"
+                        min="0"
+                        value="0"
+                        onchange="calculateQaza()"
+                    >
+                </div>
+
+                <div class="qaza-card">
+                    <span>Maghrib</span>
+                    <input
+                        type="number"
+                        id="qazaMaghrib"
+                        min="0"
+                        value="0"
+                        onchange="calculateQaza()"
+                    >
+                </div>
+
+                <div class="qaza-card">
+                    <span>Isha</span>
+                    <input
+                        type="number"
+                        id="qazaIsha"
+                        min="0"
+                        value="0"
+                        onchange="calculateQaza()"
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="qaza-result">
+
+                <div class="result-box">
+                    <small>Total Qaza</small>
+                    <strong id="totalQaza">0</strong>
+                    <span>Prayers</span>
+                </div>
+
+                <div class="result-box">
+                    <small>Daily Target</small>
+
+                    <input
+                        type="number"
+                        id="dailyTarget"
+                        min="1"
+                        value="2"
+                        onchange="calculateQaza()"
+                    >
+
+                    <span>Per Day</span>
+                </div>
+
+                <div class="result-box">
+                    <small>Estimated Days</small>
+                    <strong id="estimatedDays">0</strong>
+                    <span>Days</span>
+                </div>
+
+            </div>
+
+
+            <div class="qaza-actions">
+
+                <button
+                    class="secondary-btn"
+                    onclick="resetQaza()"
+                >
+                    Reset
+                </button>
+
+                <button
+                    class="gold-btn"
+                    onclick="saveQaza()"
+                >
+                    Save Qaza Progress
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOT NOTE -->
+        <div class="page-note">
+
+            <span>☪</span>
+
+            <p>
+                Stay consistent, make every Salah count,
+                and keep your connection with Allah strong.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="./data/salah.js"></script>
+
+</body>
+</html>
