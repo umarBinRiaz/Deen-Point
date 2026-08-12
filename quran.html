@@ -121,6 +121,42 @@
         </div>
     </footer>
 
+    <div class="reader-overlay" id="readerOverlay" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+        <div class="reader-modal">
+            <div class="reader-head">
+                <button class="reader-close" onclick="closeReader()" aria-label="Close reader"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="reader-body">
+                <div class="reader-state" id="readerLoading">
+                    <div class="spinner-dp"></div>
+                    <p>Loading Surah...</p>
+                </div>
+                <div class="reader-state" id="readerError" style="display:none;">
+                    <i class="fa-solid fa-wifi"></i>
+                    <h4>Couldn't load the Surah</h4>
+                    <p>Please check your internet connection and try again.</p>
+                    <button class="btn-dp btn-dp-primary" onclick="loadSurah(currentSurah)"><i
+                            class="fa-solid fa-rotate-right"></i> Retry</button>
+                </div>
+                <article class="reader-content" id="readerContent" hidden>
+                    <header class="reader-surah-head">
+                        <div class="reader-title" id="readerTitle"></div>
+                        <div class="reader-meta" id="readerMeta"></div>
+                    </header>
+                    <div class="reader-ayahs" id="readerAyahs"></div>
+                </article>
+            </div>
+            <div class="reader-nav">
+                <button class="reader-prev" id="readerPrev" onclick="navSurah(-1)"><i class="fa-solid fa-arrow-right"></i>
+                    Previous</button>
+                <span class="reader-pos" id="readerPos"></span>
+                <button class="reader-next" id="readerNext" onclick="navSurah(1)">Next <i
+                        class="fa-solid fa-arrow-left"></i></button>
+            </div>
+        </div>
+    </div>
+
     <div class="audio-player-bar" id="playerBar">
         <div class="container-dp">
             <div class="d-flex align-items-center gap-3">
@@ -217,6 +253,9 @@
                             <span class="pill-badge"><i class="fa-solid fa-star me-1"></i>Juz ${s.juz}</span>
                         </div>
                         <div class="surah-actions">
+                            <button class="surah-read" onclick="openReader(${s.id})">
+                                <i class="fa-solid fa-book-open"></i> Read
+                            </button>
                             ${src ? `
                                 <button class="surah-play ${playing ? "playing" : ""}" onclick="togglePlay(${s.id}, '${s.name.replace(/'/g, "\\'")}')">
                                     <i class="fa-solid ${playing ? "fa-pause" : "fa-play"}"></i> ${playing ? "Pause" : "Play"}
@@ -283,6 +322,82 @@
             currentPlayingId = null;
             playerBar.classList.remove("show");
             renderPlayButtons();
+        }
+
+        const readerOverlay = document.getElementById("readerOverlay");
+        let currentSurah = null;
+
+        function openReader(id) {
+            currentSurah = id;
+            readerOverlay.classList.add("show");
+            document.body.style.overflow = "hidden";
+            loadSurah(id);
+        }
+
+        function closeReader() {
+            readerOverlay.classList.remove("show");
+            document.body.style.overflow = "";
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && readerOverlay.classList.contains("show")) closeReader();
+        });
+
+        readerOverlay.addEventListener("click", (e) => {
+            if (e.target === readerOverlay) closeReader();
+        });
+
+        function esc(str) {
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        async function loadSurah(id) {
+            const s = surahsDB.find(x => x.id === id);
+            document.getElementById("readerLoading").style.display = "";
+            document.getElementById("readerError").style.display = "none";
+            document.getElementById("readerContent").hidden = true;
+            document.getElementById("readerPos").textContent = s ? s.name + " (" + id + "/114)" : "";
+
+            try {
+                const res = await fetch("https://api.alquran.cloud/v1/surah/" + id + "/quran-uthmani");
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                const json = await res.json();
+                if (json.code !== 200) throw new Error("API " + json.code);
+                renderReader(json.data, s);
+            } catch (err) {
+                document.getElementById("readerLoading").style.display = "none";
+                document.getElementById("readerError").style.display = "";
+            }
+        }
+
+        function renderReader(data, s) {
+            document.getElementById("readerTitle").textContent = data.name;
+            document.getElementById("readerMeta").textContent =
+                "Surah " + (s ? s.name : data.englishName) + " — " + data.englishNameTranslation +
+                " • " + data.numberOfAyahs + " Ayat • Juz " + (s ? s.juz : data.ayahs[0].juz);
+
+            const wrap = document.getElementById("readerAyahs");
+            wrap.innerHTML = data.ayahs.map(a => `
+                <div class="ayah">
+                    <span class="ayah-num">${a.numberInSurah}</span>
+                    <div class="ayah-text">${esc(a.text)}</div>
+                </div>`).join("");
+
+            document.getElementById("readerLoading").style.display = "none";
+            document.getElementById("readerContent").hidden = false;
+            document.querySelector(".reader-body").scrollTop = 0;
+        }
+
+        function navSurah(dir) {
+            const next = currentSurah + dir;
+            if (next < 1 || next > 114) {
+                return showToast(dir < 0 ? "You are already at the first Surah" : "You are already at the last Surah");
+            }
+            openReader(next);
         }
 
         renderJuzFilters();
