@@ -127,6 +127,9 @@
     <div class="reader-overlay" id="readerOverlay" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
         <div class="reader-modal">
             <div class="reader-head">
+                <button class="reader-toggle" id="toggleTrans" onclick="toggleTranslation()"
+                    title="Show or hide the English translation"><i class="fa-solid fa-language"></i>
+                    <span>English</span></button>
                 <button class="reader-close" onclick="closeReader()" aria-label="Close reader"><i
                         class="fa-solid fa-xmark"></i></button>
             </div>
@@ -152,11 +155,11 @@
             </div>
             <div class="reader-nav">
                 <button class="reader-prev" id="readerPrev" onclick="navSurah(-1)"><i
-                        class="fa-solid fa-arrow-right"></i>
+                        class="fa-solid fa-arrow-left"></i>
                     Previous</button>
                 <span class="reader-pos" id="readerPos"></span>
                 <button class="reader-next" id="readerNext" onclick="navSurah(1)">Next <i
-                        class="fa-solid fa-arrow-left"></i></button>
+                        class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
     </div>
@@ -367,33 +370,69 @@
             document.getElementById("readerPos").textContent = s ? s.name + " (" + id + "/114)" : "";
 
             try {
-                const res = await fetch("https://api.alquran.cloud/v1/surah/" + id + "/quran-uthmani");
+                const res = await fetch(
+                    "https://api.alquran.cloud/v1/surah/" + id + "/editions/quran-uthmani,en.sahih");
                 if (!res.ok) throw new Error("HTTP " + res.status);
                 const json = await res.json();
-                if (json.code !== 200) throw new Error("API " + json.code);
-                renderReader(json.data, s);
+                if (json.code !== 200 || !json.data || json.data.length < 2) throw new Error("API " + json.code);
+                renderReader(json.data[0], json.data[1], s);
             } catch (err) {
                 document.getElementById("readerLoading").style.display = "none";
                 document.getElementById("readerError").style.display = "";
             }
         }
 
-        function renderReader(data, s) {
-            document.getElementById("readerTitle").textContent = data.name;
+        let showTranslation = true;
+
+        function renderReader(arData, enData, s) {
+            document.getElementById("readerTitle").textContent = arData.name;
             document.getElementById("readerMeta").textContent =
-                "Surah " + (s ? s.name : data.englishName) + " — " + data.englishNameTranslation +
-                " • " + data.numberOfAyahs + " Ayat • Juz " + (s ? s.juz : data.ayahs[0].juz);
+                "Surah " + (s ? s.name : arData.englishName) + " — " + arData.englishNameTranslation +
+                " • " + arData.numberOfAyahs + " Ayat • Juz " + (s ? s.juz : arData.ayahs[0].juz) +
+                " • English translation";
 
             const wrap = document.getElementById("readerAyahs");
-            wrap.innerHTML = data.ayahs.map(a => `
+            const ayahs = arData.ayahs;
+            const rukuBase = ayahs.length ? ayahs[0].ruku : 0;
+            let html = "";
+
+            ayahs.forEach((a, i) => {
+                const trans = enData && enData.ayahs[i] ? enData.ayahs[i].text : "";
+                const lastOfRuku = i === ayahs.length - 1 || ayahs[i + 1].ruku !== a.ruku;
+                html += `
                 <div class="ayah">
-                    <span class="ayah-num">${a.numberInSurah}</span>
-                    <div class="ayah-text">${esc(a.text)}</div>
-                </div>`).join("");
+                    <div class="ayah-body">
+                        <div class="ayah-text">${esc(a.text)}<span class="ayah-num">${a.numberInSurah}</span></div>
+                        ${trans ? `<div class="ayah-trans">${esc(trans)}</div>` : ""}
+                    </div>
+                </div>`;
+                if (lastOfRuku) {
+                    html += `
+                <div class="ruku-mark">
+                    <span class="ruku-ayin">ع</span>
+                    <span class="ruku-label">Ruku ${a.ruku - rukuBase + 1}</span>
+                </div>`;
+                }
+            });
+
+            wrap.innerHTML = html;
+
+            if (!showTranslation) document.querySelectorAll(".ayah-trans").forEach(el => el.style.display = "none");
 
             document.getElementById("readerLoading").style.display = "none";
             document.getElementById("readerContent").hidden = false;
             document.querySelector(".reader-body").scrollTop = 0;
+        }
+
+        function toggleTranslation() {
+            showTranslation = !showTranslation;
+            const btn = document.getElementById("toggleTrans");
+            const off = !showTranslation;
+            btn.classList.toggle("off", off);
+            btn.querySelector("span").textContent = off ? "Arabic Only" : "English";
+            document.querySelectorAll(".ayah-trans").forEach(el => {
+                el.style.display = off ? "none" : "";
+            });
         }
 
         function navSurah(dir) {
