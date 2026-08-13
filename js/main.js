@@ -1,4 +1,32 @@
 /* DeenPoint — shared interactions */
+const NAV_LANG_KEY = "dpNavLang";
+
+function applyNavLang(lang) {
+    const nav = document.querySelector(".dp-navbar");
+    const toggle = document.getElementById("langToggle");
+    if (!nav) return;
+    const isAr = lang === "ar";
+    nav.setAttribute("dir", isAr ? "rtl" : "ltr");
+    nav.classList.toggle("nav-ar", isAr);
+    document.querySelectorAll("#navbarNav .nav-link").forEach(a => {
+        if (isAr && a.dataset.ar) a.textContent = a.dataset.ar;
+        else if (!isAr && a.dataset.en) a.textContent = a.dataset.en;
+    });
+    const cta = document.querySelector("#navbarNav .btn-dp");
+    if (cta) {
+        cta.innerHTML = isAr
+            ? '<i class="fa-solid fa-headphones"></i> استمع إلى القرآن'
+            : '<i class="fa-solid fa-headphones"></i> Listen Quran';
+    }
+    if (toggle) {
+        toggle.textContent = isAr ? "EN" : "عربي";
+        toggle.setAttribute("aria-label", isAr ? "Switch to English" : "التبديل إلى العربية");
+    }
+    try {
+        localStorage.setItem(NAV_LANG_KEY, isAr ? "ar" : "en");
+    } catch (e) { /* storage unavailable */ }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.querySelector(".dp-navbar");
     const onScroll = () => {
@@ -7,6 +35,19 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+
+    const langToggle = document.getElementById("langToggle");
+    if (langToggle) {
+        let saved = "en";
+        try {
+            saved = localStorage.getItem(NAV_LANG_KEY) === "ar" ? "ar" : "en";
+        } catch (e) { /* storage unavailable */ }
+        applyNavLang(saved);
+        langToggle.addEventListener("click", () => {
+            const isAr = navbar && navbar.getAttribute("dir") === "rtl";
+            applyNavLang(isAr ? "en" : "ar");
+        });
+    }
 
     document.querySelectorAll("#year").forEach(el => {
         el.textContent = new Date().getFullYear();

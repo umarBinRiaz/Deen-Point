@@ -26,6 +26,7 @@
     --radius-full: 100px;
 
     --font-ui: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+    --font-arabic-ui: 'Noto Naskh Arabic', 'Amiri', 'Segoe UI', system-ui, sans-serif;
     --font-arabic: 'Amiri', 'Scheherazade New', 'Traditional Arabic', serif;
     --font-urdu: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
     --font-serif: 'Source Serif 4', Georgia, serif;
@@ -299,6 +300,37 @@ p {
 
 .navbar-toggler:focus {
     box-shadow: none;
+}
+
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1;
+    padding: 9px 14px;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    transition: var(--transition);
+}
+
+.lang-toggle:hover {
+    background: rgba(14, 107, 69, 0.08);
+    transform: translateY(-1px);
+}
+
+.dp-navbar[dir="rtl"] .navbar-collapse,
+.dp-navbar[dir="rtl"] .nav-link,
+.dp-navbar[dir="rtl"] .btn-dp-primary,
+.dp-navbar[dir="rtl"] .lang-toggle {
+    font-family: var(--font-arabic-ui);
+    letter-spacing: 0;
 }
 
 /* ---------- 6. Hero ---------- */

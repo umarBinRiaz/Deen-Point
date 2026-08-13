@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -28,18 +28,21 @@
             <a class="navbar-brand" href="index.html">
                 <span class="brand-mark"><i class="fa-solid fa-kaaba"></i></span>DeenPoint
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <div class="d-flex align-items-center gap-2 order-lg-last">
+                <button class="lang-toggle" type="button" id="langToggle" aria-label="Switch to Arabic">عربي</button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center gap-lg-2">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="quran.html">Quran</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hadith.html">Hadith</a></li>
-                    <li class="nav-item"><a class="nav-link" href="dua.html">Duas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="salah.html">Salah Tracker</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quran.html" data-en="Quran" data-ar="القرآن">Quran</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hadith.html" data-en="Hadith" data-ar="الحديث">Hadith</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dua.html" data-en="Duas" data-ar="الأذكار">Duas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="articles.html" data-en="Articles" data-ar="المقالات">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="salah.html" data-en="Salah Tracker" data-ar="مواقيت الصلاة">Salah Tracker</a></li>
                 </ul>
             </div>
         </div>
