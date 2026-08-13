@@ -26,6 +26,15 @@
 * Hadith organized by topic
 * Daily Hadith feature for regular learning
 
+### 🤲 Duas Collection
+
+* Collection of **200 duas** from the Quran &amp; Sunnah
+* Original Arabic text
+* Transliteration and Urdu translations
+* Duas organized by 19 everyday categories
+* Search, filter and copy any dua with one tap
+* Random dua picker for daily reflection
+
 ### 📚 Islamic Knowledge
 
 Explore **25 educational articles** covering topics such as:
@@ -68,8 +77,10 @@ The goal is to make Islamic learning **simple, accessible, and organized for eve
 | Quran Surahs     |       114 |
 | Quran Ayat       |     6,236 |
 | Authentic Hadith |       100 |
+| Duas             |       200 |
 | Islamic Articles |        25 |
 | Quran Audio      |         ✅ |
+| Salah Tracker    |         ✅ |
 
 ---
 
@@ -80,6 +91,12 @@ Explore the complete Quran with Surah navigation and audio recitation.
 
 **Hadith**
 Read a curated collection of authentic Hadith with Arabic text and Urdu translation.
+
+**Duas**
+Browse 200 authentic supplications with Arabic, transliteration and Urdu translation.
+
+**Salah Tracker**
+Track your five daily prayers, maintain your streak and plan qaza salah repayment.
 
 **Articles**
 Learn about different aspects of Islam through educational and informative articles.

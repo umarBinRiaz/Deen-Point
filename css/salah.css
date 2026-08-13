@@ -1,561 +1,384 @@
 /* =========================================
-   DEEN POINT — SALAH TRACKER
+   DEENPOINT — SALAH TRACKER
+   Tracker-specific styles (theme vars from style.css)
 ========================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7f6;
-    color: #18221d;
-    min-height: 100vh;
-}
-
-button,
-input {
-    font: inherit;
-}
-
-
-/* =========================================
-   APP
-========================================= */
-
-.salah-app {
-    width: min(100%, 1000px);
-    margin: auto;
-    padding: 30px 20px 60px;
-}
-
-
-/* =========================================
-   HEADER
-========================================= */
-
-.salah-header {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 35px;
-}
-
-.back-btn {
-    width: 45px;
-    height: 45px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: white;
-    color: #18221d;
-
-    border-radius: 12px;
-
-    text-decoration: none;
-
-    font-size: 24px;
-
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-}
-
-.salah-header h1 {
-    font-size: 30px;
-    margin-bottom: 5px;
-}
-
-.salah-header p {
-    color: #718078;
-}
-
-
-/* =========================================
-   SECTIONS
-========================================= */
-
-.today-section,
-.qaza-section {
-    background: white;
-    border-radius: 22px;
-    padding: 25px;
-
-    margin-bottom: 25px;
-
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-}
-
-.section-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 25px;
-}
-
-.section-heading h2,
-.section-title h2 {
-    font-size: 22px;
-    margin-bottom: 5px;
-}
-
-.section-heading p,
-.section-title p {
-    color: #718078;
-    font-size: 14px;
-}
-
-
-/* =========================================
-   PROGRESS CIRCLE
-========================================= */
-
-.progress-circle {
-    width: 65px;
-    height: 65px;
-
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #edf5f0;
-
-    font-weight: bold;
-    color: #1d6b46;
-}
-
-
-/* =========================================
-   SALAH CARD
-========================================= */
-
+/* ---------- Salah list ---------- */
 .salah-list {
     display: grid;
-    gap: 12px;
+    gap: 14px;
 }
 
 .salah-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding: 16px;
-
-    border: 1px solid #e7ece9;
-    border-radius: 16px;
-
-    transition: 0.2s ease;
+    gap: 14px;
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    transition: var(--transition);
 }
 
 .salah-card:hover {
-    transform: translateY(-2px);
-    border-color: #b8d6c5;
+    border-color: rgba(14, 107, 69, 0.3);
+    box-shadow: var(--shadow-sm);
+}
+
+.salah-card.completed {
+    border-color: rgba(28, 154, 99, 0.45);
+    background: linear-gradient(120deg, #f0faf4, #f6fcf8);
+}
+
+.salah-card.completed .salah-info h3 {
+    color: var(--primary-700);
 }
 
 .salah-info {
     display: flex;
     align-items: center;
     gap: 14px;
+    min-width: 0;
 }
 
 .salah-icon {
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1.25rem;
+    color: var(--primary);
+    background: rgba(14, 107, 69, 0.09);
+    border-radius: 14px;
+    transition: var(--transition);
+}
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #f1f7f3;
-    border-radius: 12px;
-
-    font-size: 21px;
+.salah-card.completed .salah-icon {
+    background: var(--primary);
+    color: #fff;
 }
 
 .salah-info h3 {
-    font-size: 16px;
-    margin-bottom: 4px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-bottom: 2px;
+}
+
+.salah-info h3 .salah-arabic {
+    font-family: var(--font-arabic);
+    font-size: 1.05rem;
+    color: var(--gold);
+    margin-left: 6px;
+    font-weight: 700;
 }
 
 .salah-info p {
-    font-size: 13px;
-    color: #7b8881;
+    margin-bottom: 0;
+    font-size: 0.82rem;
+    color: var(--muted);
 }
 
-
-/* =========================================
-   CHECK BUTTON
-========================================= */
-
+/* ---------- Check toggle ---------- */
 .salah-check {
-    border: none;
-
-    width: 45px;
-    height: 45px;
-
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: var(--white);
+    border: 2px solid var(--line);
     border-radius: 50%;
-
     cursor: pointer;
+    color: var(--muted);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: var(--transition);
+    font-family: var(--font-ui);
+}
 
-    background: #f2f5f3;
-    color: #748079;
-
-    font-size: 25px;
-
-    transition: 0.2s;
+.salah-check:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: scale(1.06);
 }
 
 .salah-check.completed {
-    background: #dff3e7;
-    color: #16844c;
+    background: var(--success);
+    border-color: var(--success);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(28, 154, 99, 0.35);
 }
 
-.salah-card.completed {
-    background: #f7fcf9;
-    border-color: #c8e6d3;
+.salah-check.completed:hover {
+    background: var(--primary);
+    border-color: var(--primary);
 }
 
-
-/* =========================================
-   PROGRESS BAR
-========================================= */
-
+/* ---------- Progress box ---------- */
 .progress-box {
-    margin-top: 25px;
-
-    padding: 18px;
-
-    background: #f7f9f8;
-
-    border-radius: 16px;
+    background: var(--cream);
+    border: 1px solid var(--gold-soft);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
 }
 
 .progress-top,
 .progress-bottom {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 700;
 }
 
 .progress-top {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+}
+
+.progress-top span {
+    color: var(--muted);
+}
+
+.progress-top strong {
+    color: var(--primary);
 }
 
 .progress-bottom {
-    margin-top: 9px;
-
-    font-size: 12px;
-
-    color: #718078;
+    margin-top: 10px;
+    color: var(--muted);
+    font-weight: 600;
 }
 
 .progress-bar {
-    height: 9px;
-
-    background: #e5ebe7;
-
-    border-radius: 20px;
-
+    height: 12px;
+    background: rgba(14, 107, 69, 0.12);
+    border-radius: var(--radius-full);
     overflow: hidden;
 }
 
 #progressFill {
     height: 100%;
-
     width: 0%;
-
-    background: #2d8a5c;
-
-    border-radius: inherit;
-
-    transition: width 0.3s ease;
+    background: var(--gradient-cta);
+    border-radius: var(--radius-full);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-/* =========================================
-   QAZA
-========================================= */
-
-.section-title {
-    margin-bottom: 22px;
+/* ---------- Progress ring ---------- */
+.progress-ring {
+    position: relative;
+    width: 104px;
+    height: 104px;
+    flex-shrink: 0;
 }
 
-.qaza-grid {
+.progress-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.ring-track {
+    fill: none;
+    stroke: rgba(14, 107, 69, 0.12);
+    stroke-width: 10;
+}
+
+.ring-fill {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 326.73;
+    stroke-dashoffset: 326.73;
+    transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-ring span {
+    position: absolute;
+    inset: 0;
     display: grid;
-
-    grid-template-columns: repeat(5, 1fr);
-
-    gap: 12px;
+    place-items: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--primary);
 }
 
+.progress-ring span.done {
+    color: var(--success);
+}
+
+/* ---------- Streak ---------- */
+.streak-icon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 14px;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    color: var(--gold);
+    background: var(--cream);
+    border: 1.5px dashed var(--gold-soft);
+    border-radius: 18px;
+}
+
+/* ---------- 7-day history ---------- */
+.history-list-empty {
+    text-align: center;
+    padding: 24px 8px;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.history-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+}
+
+.history-row:last-child {
+    border-bottom: none;
+}
+
+.history-day {
+    width: 46px;
+    flex-shrink: 0;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.history-dots {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.history-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(14, 107, 69, 0.14);
+    border: 1px solid rgba(14, 107, 69, 0.2);
+}
+
+.history-dot.on {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.history-pct {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--gold);
+    width: 34px;
+    text-align: right;
+}
+
+/* ---------- Qaza calculator ---------- */
 .qaza-card {
-    padding: 15px;
-
-    background: #f7f9f8;
-
-    border-radius: 14px;
+    background: var(--light);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    text-align: center;
 }
 
 .qaza-card label {
     display: block;
-
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--primary);
     margin-bottom: 8px;
-
-    font-size: 14px;
-    font-weight: 600;
+    letter-spacing: 0.3px;
 }
 
 .qaza-card input {
     width: 100%;
-
-    padding: 10px;
-
-    border: 1px solid #dce4df;
-
-    border-radius: 9px;
-
-    outline: none;
-
-    background: white;
+    border: 2px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    transition: var(--transition);
 }
 
 .qaza-card input:focus {
-    border-color: #2d8a5c;
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(14, 107, 69, 0.1);
 }
-
-
-/* =========================================
-   QAZA RESULT
-========================================= */
 
 .qaza-result {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
-    gap: 12px;
-
-    margin-top: 20px;
+    gap: 14px;
 }
 
 .result-item {
-    padding: 18px;
-
-    background: #f0f7f3;
-
-    border-radius: 14px;
-
+    background: var(--cream);
+    border: 1px solid var(--gold-soft);
+    border-radius: var(--radius-sm);
+    padding: 16px;
     text-align: center;
 }
 
 .result-item span {
     display: block;
-
-    color: #66756d;
-
-    font-size: 13px;
-
-    margin-bottom: 7px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
 }
 
 .result-item strong {
-    font-size: 24px;
-
-    color: #1d6b46;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
 }
 
 .result-item input {
-    width: 70px;
-
+    width: 90px;
+    margin-inline: auto;
+    border: 2px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 6px 8px;
     text-align: center;
+    font-weight: 700;
+    color: var(--ink);
+    font-family: var(--font-ui);
+}
 
-    padding: 7px;
-
-    border: 1px solid #cbdad1;
-
-    border-radius: 8px;
-
-    background: white;
-
+.result-item input:focus {
     outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(14, 107, 69, 0.1);
 }
 
-
-/* =========================================
-   ACTIONS
-========================================= */
-
-.actions {
-    display: flex;
-
-    gap: 12px;
-
-    margin-top: 5px;
-}
-
-.actions button {
-    flex: 1;
-
-    padding: 14px;
-
-    border: none;
-
-    border-radius: 13px;
-
-    cursor: pointer;
-
-    font-weight: 600;
-
-    transition: 0.2s;
-}
-
-.reset-btn {
-    background: #edf1ef;
-    color: #38443e;
-}
-
-.save-btn {
-    background: #1d6b46;
-    color: white;
-}
-
-.actions button:hover {
-    transform: translateY(-2px);
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 700px) {
-
-    .salah-app {
-        padding: 20px 14px 40px;
-    }
-
-    .salah-header h1 {
-        font-size: 24px;
-    }
-
-    .today-section,
-    .qaza-section {
-        padding: 18px;
-
-        border-radius: 18px;
-    }
-
-    .qaza-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
+/* ---------- Responsive ---------- */
+@media (max-width: 575.98px) {
     .qaza-result {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
-    .actions {
-        flex-direction: column;
-    }
-}
-
-
-@media (max-width: 420px) {
-
-    .section-heading h2 {
-        font-size: 19px;
+    .result-item:last-child {
+        grid-column: span 2;
     }
 
-    .salah-card {
-        padding: 13px;
+    .progress-ring {
+        width: 88px;
+        height: 88px;
     }
-
-    .salah-icon {
-        width: 40px;
-        height: 40px;
-    }
-
-    .salah-info h3 {
-        font-size: 15px;
-    }
-
-    .salah-info p {
-        font-size: 11px;
-    }
-
-    .salah-check {
-        width: 40px;
-        height: 40px;
-    }
-}
-.dp-navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1030;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
-    padding: 14px 0;
-    transition: var(--transition);
-}
-
-.dp-navbar.scrolled {
-    box-shadow: var(--shadow-md);
-    padding: 9px 0;
-}
-
-.dp-navbar .navbar-brand {
-    font-size: 1.45rem;
-    font-weight: 800;
-    color: var(--primary) !important;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    letter-spacing: -0.3px;
-}
-
-.brand-mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    background: var(--gradient-cta);
-    color: #fff;
-    display: grid;
-    place-items: center;
-    font-size: 1rem;
-    box-shadow: 0 6px 14px rgba(14, 107, 69, 0.35);
-}
-
-.dp-navbar .nav-link {
-    font-weight: 600;
-    color: var(--ink) !important;
-    padding: 8px 14px !important;
-    border-radius: var(--radius-full);
-    transition: var(--transition);
-    position: relative;
-}
-
-.dp-navbar .nav-link:hover {
-    color: var(--primary) !important;
-    background: rgba(14, 107, 69, 0.07);
-}
-
-.dp-navbar .nav-link.active {
-    color: var(--primary) !important;
-    background: rgba(14, 107, 69, 0.12);
-}
-
-.navbar-toggler {
-    border: none;
-    color: var(--primary);
-    font-size: 1.4rem;
-}
-
-.navbar-toggler:focus {
-    box-shadow: none;
 }

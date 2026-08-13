@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hadith — 100 Authentic Sayings of the Prophet | DeenPoint</title>
+    <title>Duas — 200 Authentic Supplications | DeenPoint</title>
     <link rel="shortcut icon" sizes="512x512" href="images/ChatGPT Image Aug 13, 2026, 09_41_40 PM.png"
         type="image/png">
     <meta name="description"
-        content="A curated collection of 100 authentic hadith with Arabic text, Urdu translation and source references from the major Hadith collections.">
+        content="A curated collection of 200 authentic duas from the Quran and Sunnah with Arabic text, Urdu translation and transliteration.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +35,8 @@
                 <ul class="navbar-nav align-items-lg-center gap-lg-2">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="quran.html">Quran</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="hadith.html">Hadith</a></li>
-                    <li class="nav-item"><a class="nav-link" href="dua.html">Duas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hadith.html">Hadith</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="dua.html">Duas</a></li>
                     <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
                     <li class="nav-item"><a class="nav-link" href="salah.html">Salah Tracker</a></li>
                 </ul>
@@ -47,10 +47,10 @@
     <header class="page-hero">
         <div class="container-dp">
             <div class="breadcrumb-dp"><a href="index.html">Home</a> <i class="fa-solid fa-angle-right"></i>
-                <span>Hadith</span>
+                <span>Duas</span>
             </div>
-            <h1><i class="fa-solid fa-scroll me-2"></i>Hadith <span class="text-gold">Collection</span></h1>
-            <p>"Whoever Allah wishes good for, He gives him understanding of the religion." — Sahih al-Bukhari</p>
+            <h1><i class="fa-solid fa-hands-praying me-2"></i>Duas <span class="text-gold">Collection</span></h1>
+            <p>"Supplication is worship." — Sunan Abi Dawud · 200 duas from the Quran &amp; Sunnah</p>
         </div>
     </header>
 
@@ -59,20 +59,23 @@
             <div class="row g-4 align-items-start">
                 <aside class="col-lg-4 col-xl-3">
                     <div class="card border-0 shadow-sm p-4 rounded-4 bg-white sticky-top" style="top:90px;">
-                        <h5 class="fw-bold mb-3"><i class="fa-solid fa-filter text-success me-2"></i>Filter Hadith</h5>
-                        <input type="text" class="form-control mb-3" id="hadithSearch"
-                            placeholder="Search Arabic or Urdu..." oninput="renderHadith()">
-                        <div class="d-flex flex-wrap gap-2" id="sourceFilters"></div>
+                        <h5 class="fw-bold mb-3"><i class="fa-solid fa-filter text-success me-2"></i>Filter Duas</h5>
+                        <input type="text" class="form-control mb-3" id="duaSearch"
+                            placeholder="Search Arabic or Urdu..." oninput="renderDuas()">
+                        <button class="btn btn-dp btn-dp-green w-100 mb-3" type="button" id="randomDuaBtn">
+                            <i class="fa-solid fa-shuffle"></i> Random Dua
+                        </button>
+                        <div class="d-flex flex-wrap gap-2" id="categoryFilters"></div>
                         <hr>
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="small text-muted">Showing</span>
-                            <span class="pill-badge" id="hadithCount"
+                            <span class="pill-badge" id="duaCount"
                                 style="background:var(--cream);border:1px solid var(--gold-soft);color:var(--primary-700);"></span>
                         </div>
                     </div>
                 </aside>
                 <div class="col-lg-8 col-xl-9">
-                    <div class="row g-3" id="hadithList"></div>
+                    <div class="row g-3" id="duaList"></div>
                 </div>
             </div>
         </div>
@@ -84,7 +87,7 @@
                 <div class="col-lg-4">
                     <a class="footer-brand" href="index.html"><i class="fa-solid fa-kaaba me-2"></i>DeenPoint</a>
                     <p class="mt-3 mb-0" style="color:rgba(255,255,255,.72);">A trusted Islamic knowledge hub bringing
-                        together the Quran, authentic Hadith and scholarly articles for everyday learning.</p>
+                        together the Quran, authentic Hadith, scholarly articles and daily duas for every Muslim.</p>
                 </div>
                 <div class="col-lg-2 col-6">
                     <h6>Explore</h6>
@@ -119,74 +122,103 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="data/hadith.js"></script>
+    <script src="data/duas.js"></script>
     <script src="js/main.js"></script>
     <script>
-        let activeSource = "All";
+        let activeCategory = "All";
 
-        const sources = ["All", ...new Set(hadithsDB.map(h => h.source))];
+        const categories = ["All", ...new Set(duasDB.map(d => d.category))];
 
         function renderFilters() {
-            const wrap = document.getElementById("sourceFilters");
-            wrap.innerHTML = sources.map((s, i) =>
-                `<button class="filter-chip ${s === activeSource ? "active" : ""}" data-src="${i}" type="button">${s}</button>`
+            const wrap = document.getElementById("categoryFilters");
+            wrap.innerHTML = categories.map((c, i) =>
+                `<button class="filter-chip ${c === activeCategory ? "active" : ""}" data-cat="${i}" type="button">${c}</button>`
             ).join("");
         }
 
-        document.getElementById("sourceFilters").addEventListener("click", (e) => {
+        document.getElementById("categoryFilters").addEventListener("click", (e) => {
             const btn = e.target.closest(".filter-chip");
             if (!btn) return;
-            activeSource = sources[Number(btn.dataset.src)];
+            activeCategory = categories[Number(btn.dataset.cat)];
             renderFilters();
-            renderHadith();
+            renderDuas();
         });
 
-        function renderHadith() {
-            const q = document.getElementById("hadithSearch").value.trim().toLowerCase();
-            const list = document.getElementById("hadithList");
+        document.getElementById("randomDuaBtn").addEventListener("click", () => {
+            const pool = activeCategory === "All"
+                ? duasDB
+                : duasDB.filter(d => d.category === activeCategory);
+            const dua = pool[Math.floor(Math.random() * pool.length)];
+            const card = document.getElementById("dua-" + dua.id);
+            if (card) {
+                card.scrollIntoView({ behavior: "smooth", block: "center" });
+                card.classList.remove("dua-flash");
+                void card.offsetWidth;
+                card.classList.add("dua-flash");
+            }
+        });
+
+        function renderDuas() {
+            const q = document.getElementById("duaSearch").value.trim().toLowerCase();
+            const list = document.getElementById("duaList");
             list.innerHTML = "";
 
-            const filtered = hadithsDB.filter(h => {
-                const okSource = activeSource === "All" || h.source === activeSource;
+            const filtered = duasDB.filter(d => {
+                const okCat = activeCategory === "All" || d.category === activeCategory;
                 const okSearch = !q ||
-                    h.arabic.toLowerCase().includes(q) ||
-                    h.urdu.toLowerCase().includes(q);
-                return okSource && okSearch;
+                    d.arabic.toLowerCase().includes(q) ||
+                    d.urdu.toLowerCase().includes(q) ||
+                    (d.translit || "").toLowerCase().includes(q);
+                return okCat && okSearch;
             });
 
-            document.getElementById("hadithCount").textContent = filtered.length + " / " + hadithsDB.length;
+            document.getElementById("duaCount").textContent = filtered.length + " / " + duasDB.length;
 
             if (!filtered.length) {
                 list.innerHTML = `
                     <div class="col-12">
                         <div class="empty-state">
-                            <i class="fa-solid fa-scroll"></i>
-                            <h4>No hadith found</h4>
+                            <i class="fa-solid fa-hands-praying"></i>
+                            <h4>No dua found</h4>
                             <p class="mb-0">Try a different keyword or clear the filters.</p>
                         </div>
                     </div>`;
                 return;
             }
 
-            filtered.forEach(h => {
+            filtered.forEach(d => {
                 const col = document.createElement("div");
                 col.className = "col-12";
                 col.innerHTML = `
-                    <div class="hadith-card reveal">
+                    <div class="hadith-card dua-card reveal" id="dua-${d.id}">
                         <div class="hadith-head">
-                            <span class="hadith-id">HADITH #${String(h.id).padStart(3, "0")}</span>
-                            <span class="hadith-src"><i class="fa-solid fa-book-open me-1"></i>${h.source}</span>
+                            <span class="hadith-id">DUA #${String(d.id).padStart(3, "0")}</span>
+                            <span class="hadith-src"><i class="fa-solid fa-tag me-1"></i>${d.category}</span>
                         </div>
-                        <div class="arabic">${h.arabic}</div>
-                        <div class="urdu">${h.urdu}</div>
+                        <div class="arabic">${d.arabic}</div>
+                        <div class="dua-translit">${d.translit}</div>
+                        <div class="urdu">${d.urdu}</div>
+                        <button class="dua-copy" type="button" title="Copy dua">
+                            <i class="fa-solid fa-copy"></i> Copy
+                        </button>
                     </div>`;
                 list.appendChild(col);
             });
-            document.querySelectorAll("#hadithList .reveal").forEach(el => el.classList.add("visible"));
+
+            list.querySelectorAll(".dua-copy").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const card = btn.closest(".dua-card");
+                    const text = card.querySelector(".arabic").textContent.trim() + "\n\n" +
+                        card.querySelector(".urdu").textContent.trim();
+                    navigator.clipboard.writeText(text).then(() => showToast("Dua copied to clipboard"));
+                });
+            });
+
+            document.querySelectorAll("#duaList .reveal").forEach(el => el.classList.add("visible"));
         }
 
         renderFilters();
-        renderHadith();
+        renderDuas();
     </script>
 </body>
 

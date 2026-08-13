@@ -1286,6 +1286,57 @@ p {
     color: var(--ink);
 }
 
+/* ---------- 13b. Duas page ---------- */
+.dua-card .dua-translit {
+    font-size: 0.95rem;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.2px;
+    margin-bottom: 10px;
+    direction: ltr;
+    text-align: left;
+}
+
+.dua-card .dua-copy {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(14, 107, 69, 0.08);
+    color: var(--primary);
+    border: 1.5px solid rgba(14, 107, 69, 0.2);
+    padding: 7px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 700;
+    font-family: var(--font-ui);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dua-card .dua-copy:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(14, 107, 69, 0.25);
+}
+
+@keyframes duaFlash {
+    0% {
+        box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.55);
+    }
+
+    100% {
+        box-shadow: 0 0 0 18px rgba(201, 162, 39, 0);
+    }
+}
+
+.dua-card.dua-flash {
+    animation: duaFlash 0.9s ease-out;
+    border-color: var(--gold);
+}
+
 /* ---------- 14. Articles page ---------- */
 .article-card {
     background: var(--white);
