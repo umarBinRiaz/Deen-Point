@@ -48,7 +48,8 @@
                     <li class="nav-item"><a class="nav-link" href="dua.html">Duas</a></li>
                     <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
                     <li class="nav-item"><a class="nav-link" href="salah.html">Salah Tracker</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="salah-reminder.html"><i class="fa-solid fa-bell me-1"></i>Salah Reminder</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="salah-reminder.html"><i
+                                class="fa-solid fa-bell me-1"></i>Salah Reminder</a></li>
                 </ul>
             </div>
         </div>
@@ -150,14 +151,17 @@
                             <div id="notifOptions" style="display:none;">
                                 <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
                                     <span class="small" style="color:var(--muted);">Remind before</span>
-                                    <select class="form-select form-select-sm w-auto" id="reminderTime" onchange="updateReminderTime()" style="border-radius:var(--radius-full);padding:6px 14px;font-weight:600;">
+                                    <select class="form-select form-select-sm w-auto" id="reminderTime"
+                                        onchange="updateReminderTime()"
+                                        style="border-radius:var(--radius-full);padding:6px 14px;font-weight:600;">
                                         <option value="5">5 minutes</option>
                                         <option value="10">10 minutes</option>
                                         <option value="15" selected>15 minutes</option>
                                         <option value="30">30 minutes</option>
                                     </select>
                                 </div>
-                                <button class="btn-dp btn-dp-ghost btn-sm w-100" onclick="sendImmediateTestNotification()">
+                                <button class="btn-dp btn-dp-ghost btn-sm w-100"
+                                    onclick="sendImmediateTestNotification()">
                                     <i class="fa-solid fa-vial"></i> Test Notification Bhejein
                                 </button>
                             </div>
@@ -168,7 +172,8 @@
                             <h3 class="fw-bold mb-3" style="font-size:1.1rem;">
                                 <i class="fa-solid fa-download text-success me-2"></i>Install DeenPoint
                             </h3>
-                            <p class="small mb-3" style="color:var(--muted);">Apne phone mein app ki tarah install karein.</p>
+                            <p class="small mb-3" style="color:var(--muted);">Apne phone mein app ki tarah install
+                                karein.</p>
                             <button class="btn-dp btn-dp-green w-100" id="pageInstallBtn" onclick="triggerInstall()">
                                 <i class="fa-solid fa-mobile-screen-button"></i> Install App
                             </button>
