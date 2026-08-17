@@ -134,7 +134,7 @@
     <script src="data/hadith.js"></script>
     <script src="js/main.js"></script>
     <script>
-        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("/sw.js").catch(() => {}); }
+        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("./sw.js").catch(() => {}); }
         let activeSource = "All";
 
         const sources = ["All", ...new Set(hadithsDB.map(h => h.source))];

@@ -1,6 +1,7 @@
-const CACHE_NAME = "deenpoint-v1";
+const CACHE_NAME = "deenpoint-v2";
+const BASE = self.registration.scope.replace(/\/$/, "");
 const ASSETS = [
-  "/",
+  "",
   "/index.html",
   "/quran.html",
   "/hadith.html",
@@ -8,6 +9,7 @@ const ASSETS = [
   "/articles.html",
   "/salah.html",
   "/salah-reminder.html",
+  "/download.html",
   "/css/style.css",
   "/css/salah.css",
   "/js/main.js",
@@ -22,7 +24,7 @@ const ASSETS = [
   "/manifest.json",
   "/images/icon-192.png",
   "/images/icon-512.png"
-];
+].map(p => p ? BASE + p : BASE + "/");
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
@@ -61,7 +63,7 @@ self.addEventListener("notificationclick", (e) => {
       for (const client of list) {
         if (client.url.includes("salah-reminder") && "focus" in client) return client.focus();
       }
-      if (clients.openWindow) return clients.openWindow("/salah-reminder.html");
+      if (clients.openWindow) return clients.openWindow(BASE + "/salah-reminder.html");
     })
   );
 });
@@ -97,8 +99,8 @@ async function checkAndNotifyPrayer() {
       if (Math.abs(now - prayerDate) < 60000) {
         self.registration.showNotification("DeenPoint Salah Reminder", {
           body: `${p.name} ka waqt 15 minute mein hai. Tayyar ho jayen!`,
-          icon: "/images/icon-192.png",
-          badge: "/images/icon-192.png",
+          icon: BASE + "/images/icon-192.png",
+          badge: BASE + "/images/icon-192.png",
           tag: "salah-" + p.name,
           requireInteraction: true,
           vibrate: [200, 100, 200]

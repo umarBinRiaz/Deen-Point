@@ -148,7 +148,7 @@
     <script src="data/articles.js"></script>
     <script src="js/main.js"></script>
     <script>
-        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("/sw.js").catch(() => {}); }
+        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("./sw.js").catch(() => {}); }
         let activeCat = "All";
 
         const categories = ["All", ...new Set(articlesDB.map(a => a.category))];

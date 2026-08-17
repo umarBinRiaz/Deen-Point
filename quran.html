@@ -208,7 +208,7 @@
     <script src="data/surahs.js"></script>
     <script src="js/main.js"></script>
     <script>
-        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("/sw.js").catch(() => {}); }
+        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("./sw.js").catch(() => {}); }
         let activeJuz = 0;
         let currentPlayingId = null;
 

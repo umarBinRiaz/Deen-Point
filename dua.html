@@ -137,7 +137,7 @@
     <script src="data/duas.js"></script>
     <script src="js/main.js"></script>
     <script>
-        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("/sw.js").catch(() => {}); }
+        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("./sw.js").catch(() => {}); }
         let activeCategory = "All";
 
         const categories = ["All", ...new Set(duasDB.map(d => d.category))];
