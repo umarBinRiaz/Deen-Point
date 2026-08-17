@@ -1,4 +1,4 @@
-const CACHE_NAME = "deenpoint-v2";
+const CACHE_NAME = "deenpoint-v3";
 const BASE = self.registration.scope.replace(/\/$/, "");
 const ASSETS = [
   "",
@@ -22,6 +22,7 @@ const ASSETS = [
   "/data/articles.js",
   "/data/salah.js",
   "/manifest.json",
+  "/offline.html",
   "/images/icon-192.png",
   "/images/icon-512.png"
 ].map(p => p ? BASE + p : BASE + "/");
@@ -52,7 +53,15 @@ self.addEventListener("fetch", (e) => {
     return;
   }
   e.respondWith(
-    caches.match(e.request).then((cached) => cached || fetch(e.request))
+    caches.match(e.request).then((cached) => {
+      if (cached) return cached;
+      return fetch(e.request).catch(() => {
+        if (e.request.mode === "navigate") {
+          return caches.match(BASE + "/offline.html");
+        }
+        return new Response("", { status: 503, statusText: "Offline" });
+      });
+    })
   );
 });
 

@@ -223,7 +223,22 @@
                     const card = btn.closest(".dua-card");
                     const text = card.querySelector(".arabic").textContent.trim() + "\n\n" +
                         card.querySelector(".urdu").textContent.trim();
-                    navigator.clipboard.writeText(text).then(() => showToast("Dua copied to clipboard"));
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(() => showToast("Dua copied to clipboard")).catch(() => fallbackCopy(text));
+                    } else {
+                        fallbackCopy(text);
+                    }
+                    function fallbackCopy(t) {
+                        const ta = document.createElement("textarea");
+                        ta.value = t;
+                        ta.style.position = "fixed";
+                        ta.style.left = "-9999px";
+                        document.body.appendChild(ta);
+                        ta.select();
+                        try { document.execCommand("copy"); showToast("Dua copied to clipboard"); }
+                        catch (e) { showToast("Copy failed — please select manually"); }
+                        document.body.removeChild(ta);
+                    }
                 });
             });
 
