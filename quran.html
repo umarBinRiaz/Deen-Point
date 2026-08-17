@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quran — Surah-wise Audio &amp; Reading | DeenPoint</title>
+    <title>Quran — Surah-wise Audio &amp;Reading | DeenPoint</title>
     <link rel="shortcut icon" sizes="512x512" href="images/ChatGPT Image Aug 13, 2026, 09_41_40 PM.png"
         type="image/png">
     <meta name="description"
@@ -54,7 +54,8 @@
                             data-ar="المقالات">Articles</a></li>
                     <li class="nav-item"><a class="nav-link" href="salah.html" data-en="Salah Tracker"
                             data-ar="مواقيت الصلاة">Salah Tracker</a></li>
-                    <li class="nav-item"><a class="nav-link" href="salah-reminder.html"><i class="fa-solid fa-bell me-1"></i>Salah Reminder</a></li>
+                    <li class="nav-item"><a class="nav-link" href="salah-reminder.html"><i
+                                class="fa-solid fa-bell me-1"></i>Salah Reminder</a></li>
 
                 </ul>
             </div>
@@ -208,7 +209,7 @@
     <script src="data/surahs.js"></script>
     <script src="js/main.js"></script>
     <script>
-        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("./sw.js").catch(() => {}); }
+        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("./sw.js").catch(() => { }); }
         let activeJuz = 0;
         let currentPlayingId = null;
 
@@ -236,7 +237,7 @@
         const audioPath = (s) => {
             return "https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/"
                 + String(s.id).padStart(3, "0") + ".mp3";
-        };  
+        };
 
         function renderJuzFilters() {
             const wrap = document.getElementById("juzFilter");
