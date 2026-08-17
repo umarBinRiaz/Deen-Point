@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Salah Reminder — Prayer Times & Notifications | DeenPoint</title>
+    <link rel="shortcut icon" sizes="512x512" href="images/ChatGPT Image Aug 13, 2026, 09_41_40 PM.png"
+        type="image/png">
+    <meta name="description"
+        content="Get accurate prayer times based on your location with automatic Salah reminders. Never miss a prayer again with DeenPoint.">
+    <meta name="theme-color" content="#0e6b45">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DeenPoint">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/salah.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg dp-navbar">
+        <div class="container-dp">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-mark"><i class="fa-solid fa-kaaba"></i></span>DeenPoint
+            </a>
+            <div class="d-flex align-items-center gap-2 order-lg-last">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quran.html">Quran</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hadith.html">Hadith</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dua.html">Duas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="salah.html">Salah Tracker</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="salah-reminder.html"><i class="fa-solid fa-bell me-1"></i>Salah Reminder</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="container-dp">
+            <div class="breadcrumb-dp"><a href="index.html">Home</a> <i class="fa-solid fa-angle-right"></i>
+                <span>Salah Reminder</span>
+            </div>
+            <h1><i class="fa-solid fa-bell me-2"></i>Salah <span class="text-gold">Reminder</span></h1>
+            <p>"Verily, the prayer is imposed upon the believers at fixed times." — Surah An-Nisa (4:103)</p>
+        </div>
+    </header>
+
+    <section class="section pt-5">
+        <div class="container-dp">
+
+            <div id="locationPrompt" class="text-center mb-5">
+                <div class="card border-0 shadow-sm rounded-4 bg-white p-5 mx-auto" style="max-width:520px;">
+                    <div class="prayer-location-icon mb-4">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2" style="font-size:1.4rem;">Location Detect Karein</h2>
+                    <p class="mb-4">Aapki location se accurate prayer times automatically milenge.</p>
+                    <button class="btn-dp btn-dp-green w-100" id="detectLocationBtn" onclick="startLocationDetect()">
+                        <i class="fa-solid fa-location-arrow"></i> Location Detect Karein
+                    </button>
+                    <p class="small mt-3" style="color:var(--muted);">
+                        <i class="fa-solid fa-shield-halved me-1"></i>
+                        Aapki location sirf prayer times ke liye use hoti hai. Kahi store nahi hoti.
+                    </p>
+                </div>
+            </div>
+
+            <div id="loadingState" class="text-center mb-5" style="display:none;">
+                <div class="prayer-loading">
+                    <div class="spinner-dp"></div>
+                    <h4 class="mt-3">Prayer times load ho rahe hain...</h4>
+                    <p>Please wait</p>
+                </div>
+            </div>
+
+            <div id="prayerContent" style="display:none;">
+
+                <div class="text-center mb-4">
+                    <div class="prayer-location-badge" id="locationBadge">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="cityName">Detecting...</span>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-5">
+
+                    <div class="col-lg-7">
+                        <div class="card border-0 shadow-sm rounded-4 bg-white p-4">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                                <div>
+                                    <h2 class="fw-bold mb-1" style="font-size:1.25rem;">
+                                        <i class="fa-solid fa-calendar-day text-success me-2"></i>Aaj Ka Waqt
+                                    </h2>
+                                    <p class="mb-0 small" id="todayDate" style="color:var(--muted);"></p>
+                                </div>
+                                <div class="prayer-date-hijri" id="hijriDate"></div>
+                            </div>
+
+                            <div id="prayerTimesList"></div>
+
+                            <div class="mt-4">
+                                <button class="btn-dp btn-dp-ghost w-100" onclick="refreshPrayerTimes()">
+                                    <i class="fa-solid fa-rotate"></i> Times Refresh Karein
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="card border-0 shadow-sm rounded-4 bg-white p-4 mb-4 text-center">
+                            <div class="next-prayer-label mb-2">
+                                <i class="fa-solid fa-clock me-1"></i> Next Prayer
+                            </div>
+                            <h2 class="fw-bold mb-0 next-prayer-name" id="nextPrayerName">--</h2>
+                            <div class="next-prayer-arabic" id="nextPrayerArabic"></div>
+                            <div class="next-prayer-countdown" id="nextPrayerCountdown">00:00:00</div>
+                            <p class="small mb-0 mt-2" style="color:var(--muted);" id="nextPrayerTime"></p>
+                        </div>
+
+                        <div class="card border-0 shadow-sm rounded-4 bg-white p-4 mb-4">
+                            <h3 class="fw-bold mb-3" style="font-size:1.1rem;">
+                                <i class="fa-solid fa-bell text-success me-2"></i>Notifications
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                <span class="fw-semibold" style="font-size:0.92rem;">Salah Reminder On</span>
+                                <label class="prayer-toggle">
+                                    <input type="checkbox" id="notifToggle" onchange="toggleNotifications()">
+                                    <span class="prayer-toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div id="notifOptions" style="display:none;">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                    <span class="small" style="color:var(--muted);">Remind before</span>
+                                    <select class="form-select form-select-sm w-auto" id="reminderTime" onchange="updateReminderTime()" style="border-radius:var(--radius-full);padding:6px 14px;font-weight:600;">
+                                        <option value="5">5 minutes</option>
+                                        <option value="10">10 minutes</option>
+                                        <option value="15" selected>15 minutes</option>
+                                        <option value="30">30 minutes</option>
+                                    </select>
+                                </div>
+                                <button class="btn-dp btn-dp-ghost btn-sm w-100" onclick="sendImmediateTestNotification()">
+                                    <i class="fa-solid fa-vial"></i> Test Notification Bhejein
+                                </button>
+                            </div>
+                            <p class="small mt-2 mb-0" id="notifStatus" style="color:var(--muted);"></p>
+                        </div>
+
+                        <div class="card border-0 shadow-sm rounded-4 bg-white p-4">
+                            <h3 class="fw-bold mb-3" style="font-size:1.1rem;">
+                                <i class="fa-solid fa-download text-success me-2"></i>Install DeenPoint
+                            </h3>
+                            <p class="small mb-3" style="color:var(--muted);">Apne phone mein app ki tarah install karein.</p>
+                            <button class="btn-dp btn-dp-green w-100" id="pageInstallBtn" onclick="triggerInstall()">
+                                <i class="fa-solid fa-mobile-screen-button"></i> Install App
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card border-0 shadow-sm rounded-4 bg-white p-4">
+                    <h3 class="fw-bold mb-3" style="font-size:1.1rem;">
+                        <i class="fa-solid fa-calendar-week text-success me-2"></i>Is Hafte Ka Timetable
+                    </h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0 prayer-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Fajr</th>
+                                    <th>Sunrise</th>
+                                    <th>Dhuhr</th>
+                                    <th>Asr</th>
+                                    <th>Maghrib</th>
+                                    <th>Isha</th>
+                                </tr>
+                            </thead>
+                            <tbody id="weekTimetable"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="dp-footer">
+        <div class="container-dp">
+            <div class="row g-4 pb-4">
+                <div class="col-lg-4">
+                    <a class="footer-brand" href="index.html"><i class="fa-solid fa-kaaba me-2"></i>DeenPoint</a>
+                    <p class="mt-3 mb-0" style="color:rgba(255,255,255,.72);">A trusted Islamic knowledge hub bringing
+                        together the Quran, authentic Hadith and scholarly articles for everyday learning.</p>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6>Explore</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="quran.html">Quran</a></li>
+                        <li><a href="hadith.html">Hadith</a></li>
+                        <li><a href="dua.html">Duas</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h6>Learning</h6>
+                    <ul class="footer-links">
+                        <li><a href="quran.html">Surah-wise Audio</a></li>
+                        <li><a href="hadith.html">Daily Hadith</a></li>
+                        <li><a href="dua.html">Daily Duas</a></li>
+                        <li><a href="salah.html">Salah Tracker</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6>Contact</h6>
+                    <ul class="footer-links">
+                        <li><i class="fa-solid fa-envelope me-2"></i>DeenPoint@gmail.com</li>
+                        <li><i class="fa-solid fa-location-dot me-2"></i>Islamic World</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">© <span id="year">2026</span> DeenPoint — Islamic World | All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/prayer.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/install.js"></script>
+    <script>
+        let countdownInterval = null;
+        let weekData = null;
+
+        async function startLocationDetect() {
+            document.getElementById("locationPrompt").style.display = "none";
+            document.getElementById("loadingState").style.display = "";
+            try {
+                const loc = await detectLocation();
+                document.getElementById("cityName").textContent = loc.city || "Detected Location";
+                await loadPrayerData(loc.lat, loc.lng);
+            } catch (err) {
+                document.getElementById("loadingState").style.display = "none";
+                document.getElementById("locationPrompt").style.display = "";
+                if (err.code === 1) {
+                    showToast("Location permission denied. Please allow location access.");
+                } else {
+                    showToast("Location detect nahi ho payi. Dobara try karein.");
+                }
+            }
+        }
+
+        async function loadPrayerData(lat, lng) {
+            const data = await fetchPrayerTimes(lat, lng);
+            if (!data) {
+                document.getElementById("loadingState").style.display = "none";
+                document.getElementById("locationPrompt").style.display = "";
+                showToast("Prayer times load nahi ho paye. Internet check karein.");
+                return;
+            }
+
+            document.getElementById("loadingState").style.display = "none";
+            document.getElementById("prayerContent").style.display = "";
+
+            const date = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById("todayDate").textContent = date.toLocaleDateString('en-US', options);
+
+            if (data.date?.hijri) {
+                const h = data.date.hijri;
+                document.getElementById("hijriDate").innerHTML =
+                    `<i class="fa-solid fa-moon me-1"></i>${h.day} ${h.month.en} ${h.year} AH`;
+            }
+
+            renderPrayerTimes(data.timings);
+            updateNextPrayer(data.timings);
+            startCountdown(data.timings);
+            renderWeekTimetable(lat, lng);
+            initNotifications(data.timings);
+        }
+
+        function renderPrayerTimes(timings) {
+            const list = document.getElementById("prayerTimesList");
+            let html = "";
+            const now = new Date();
+
+            PRAYER_NAMES.forEach(name => {
+                if (!timings[name]) return;
+                const time12 = formatTime12(timings[name]);
+                const prayerTime = parseTime(timings[name]);
+                const isPast = prayerTime < now;
+                const isNext = !isPast && PRAYER_NAMES.indexOf(name) === PRAYER_NAMES.findIndex(n =>
+                    timings[n] && parseTime(timings[n]) > now
+                );
+
+                let statusClass = "";
+                let statusIcon = "";
+                if (isPast) {
+                    statusClass = "prayer-time-row-past";
+                    statusIcon = '<i class="fa-solid fa-check-circle" style="color:var(--success);"></i>';
+                } else if (isNext) {
+                    statusClass = "prayer-time-row-next";
+                    statusIcon = '<i class="fa-solid fa-arrow-right" style="color:var(--gold);"></i>';
+                }
+
+                html += `
+                    <div class="prayer-time-row ${statusClass}">
+                        <div class="prayer-time-info">
+                            <div class="prayer-time-icon"><i class="${PRAYER_ICONS[name]}"></i></div>
+                            <div>
+                                <h4>${name} <span style="font-family:var(--font-arabic);color:var(--muted);font-size:0.85em;">${PRAYER_ARABIC[name]}</span></h4>
+                                <p class="mb-0 small">${PRAYER_RAKAAT[name]}</p>
+                            </div>
+                        </div>
+                        <div class="prayer-time-value">
+                            ${statusIcon}
+                            <strong>${time12}</strong>
+                        </div>
+                    </div>`;
+            });
+
+            if (timings.Sunrise) {
+                html += `
+                    <div class="prayer-time-row prayer-time-row-past" style="opacity:0.7;">
+                        <div class="prayer-time-info">
+                            <div class="prayer-time-icon"><i class="fa-solid fa-sun"></i></div>
+                            <div>
+                                <h4>Sunrise <span style="font-family:var(--font-arabic);color:var(--muted);font-size:0.85em;">طلوع شمس</span></h4>
+                                <p class="mb-0 small">Ishraq time ends</p>
+                            </div>
+                        </div>
+                        <div class="prayer-time-value">
+                            <strong>${formatTime12(timings.Sunrise)}</strong>
+                        </div>
+                    </div>`;
+            }
+
+            list.innerHTML = html;
+        }
+
+        function updateNextPrayer(timings) {
+            const next = getNextPrayer(timings);
+            if (next) {
+                document.getElementById("nextPrayerName").textContent = next.name;
+                document.getElementById("nextPrayerArabic").textContent = PRAYER_ARABIC[next.name] || "";
+                document.getElementById("nextPrayerTime").textContent = `at ${formatTime12(next.time)}`;
+            } else {
+                document.getElementById("nextPrayerName").textContent = "Fajr";
+                document.getElementById("nextPrayerArabic").textContent = PRAYER_ARABIC["Fajr"];
+                document.getElementById("nextPrayerTime").textContent = "Kal Fajr se day restart hoga";
+            }
+        }
+
+        function startCountdown(timings) {
+            if (countdownInterval) clearInterval(countdownInterval);
+            function tick() {
+                const next = getNextPrayer(timings);
+                if (next) {
+                    const diff = next.date - new Date();
+                    document.getElementById("nextPrayerCountdown").textContent = formatCountdown(diff);
+                }
+            }
+            tick();
+            countdownInterval = setInterval(tick, 1000);
+        }
+
+        async function renderWeekTimetable(lat, lng) {
+            const tbody = document.getElementById("weekTimetable");
+            let html = "";
+            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            const today = new Date();
+
+            for (let i = 0; i < 7; i++) {
+                const d = new Date(today);
+                d.setDate(d.getDate() + i);
+                const ts = Math.floor(d.getTime() / 1000);
+                const isToday = i === 0;
+
+                try {
+                    const res = await fetch(
+                        `${PRAYER_API}/timings/${ts}?latitude=${lat}&longitude=${lng}&method=2`
+                    );
+                    if (!res.ok) throw new Error();
+                    const json = await res.json();
+                    const t = json.data?.timings;
+                    if (!t) continue;
+
+                    const rowClass = isToday ? "table-active fw-bold" : "";
+                    const dayLabel = isToday ? "Today" : dayNames[d.getDay()];
+
+                    html += `
+                        <tr class="${rowClass}">
+                            <td><strong>${dayLabel}</strong><br><small class="text-muted">${d.getDate()}/${d.getMonth() + 1}</small></td>
+                            <td>${formatTime12(t.Fajr)}</td>
+                            <td>${formatTime12(t.Sunrise)}</td>
+                            <td>${formatTime12(t.Dhuhr)}</td>
+                            <td>${formatTime12(t.Asr)}</td>
+                            <td>${formatTime12(t.Maghrib)}</td>
+                            <td>${formatTime12(t.Isha)}</td>
+                        </tr>`;
+                } catch { /* skip */ }
+            }
+
+            tbody.innerHTML = html || '<tr><td colspan="7" class="text-center text-muted py-3">Loading timetable...</td></tr>';
+        }
+
+        async function refreshPrayerTimes() {
+            showToast("Refreshing prayer times...");
+            try {
+                const loc = await detectLocation();
+                document.getElementById("cityName").textContent = loc.city || "Detected Location";
+                await loadPrayerData(loc.lat, loc.lng);
+                showToast("Prayer times updated!");
+            } catch {
+                showToast("Refresh failed. Try again.");
+            }
+        }
+
+        function initNotifications(timings) {
+            const toggle = document.getElementById("notifToggle");
+            toggle.checked = isNotificationsEnabled();
+            document.getElementById("notifOptions").style.display = isNotificationsEnabled() ? "" : "none";
+            document.getElementById("notifStatus").textContent = isNotificationsEnabled()
+                ? "Notifications active for all 5 prayers"
+                : "Enable to get reminders before each prayer";
+            const sel = document.getElementById("reminderTime");
+            sel.value = getReminderMinutes();
+            if (isNotificationsEnabled()) scheduleSalahNotifications(timings);
+        }
+
+        async function toggleNotifications() {
+            const toggle = document.getElementById("notifToggle");
+            if (toggle.checked) {
+                const ok = await requestNotificationPermission();
+                if (ok) {
+                    setNotificationsEnabled(true);
+                    document.getElementById("notifOptions").style.display = "";
+                    document.getElementById("notifStatus").textContent = "Notifications active for all 5 prayers";
+                    if (prayerData?.timings) scheduleSalahNotifications(prayerData.timings);
+                    showToast("Salah reminders enabled!");
+                } else {
+                    toggle.checked = false;
+                }
+            } else {
+                setNotificationsEnabled(false);
+                clearAllSalahTimers();
+                document.getElementById("notifOptions").style.display = "none";
+                document.getElementById("notifStatus").textContent = "Enable to get reminders before each prayer";
+                showToast("Salah reminders disabled.");
+            }
+        }
+
+        function updateReminderTime() {
+            const min = parseInt(document.getElementById("reminderTime").value);
+            setReminderMinutes(min);
+            if (prayerData?.timings) scheduleSalahNotifications(prayerData.timings);
+            showToast(`Reminder ${min} minutes pehle set kiya.`);
+        }
+
+        async function triggerInstall() {
+            if (!deferredPrompt) {
+                showToast("App already install hai ya browser support nahi karta.");
+                return;
+            }
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === "accepted") {
+                showToast("DeenPoint install ho raha hai...");
+            }
+            deferredPrompt = null;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const saved = getPrayerCache();
+            if (saved && saved.lat) {
+                document.getElementById("cityName").textContent = saved.city || "Your Location";
+                userLat = saved.lat;
+                userLng = saved.lng;
+                userCity = saved.city || "";
+                loadPrayerData(saved.lat, saved.lng);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -9,6 +9,12 @@
         type="image/png">
     <meta name="description"
         content="Track your five daily prayers with DeenPoint — daily progress, streaks, 7-day history and a qaza salah calculator.">
+    <meta name="theme-color" content="#0e6b45">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DeenPoint">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="manifest" href="manifest.json">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,6 +49,7 @@
                     <li class="nav-item"><a class="nav-link" href="dua.html" data-en="Duas" data-ar="الأذكار">Duas</a></li>
                     <li class="nav-item"><a class="nav-link" href="articles.html" data-en="Articles" data-ar="المقالات">Articles</a></li>
                     <li class="nav-item"><a class="nav-link active" href="salah.html" data-en="Salah Tracker" data-ar="مواقيت الصلاة">Salah Tracker</a></li>
+                    <li class="nav-item"><a class="nav-link" href="salah-reminder.html"><i class="fa-solid fa-bell me-1"></i>Salah Reminder</a></li>
                 </ul>
             </div>
         </div>
@@ -267,6 +274,8 @@
                         <li><a href="hadith.html">Daily Hadith</a></li>
                         <li><a href="dua.html">Daily Duas</a></li>
                         <li><a href="salah.html">Salah Tracker</a></li>
+                        <li><a href="salah-reminder.html"><i class="fa-solid fa-bell me-1"></i>Salah Reminder</a></li>
+                        <li><a href="download.html"><i class="fa-solid fa-download me-1"></i>Install App</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
@@ -285,6 +294,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="data/salah.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) { navigator.serviceWorker.register("/sw.js").catch(() => {}); }
+    </script>
 
 </body>
 

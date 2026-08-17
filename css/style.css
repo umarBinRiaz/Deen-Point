@@ -1774,6 +1774,333 @@ p {
     margin-bottom: 8px;
 }
 
+/* ---------- 20. Install Banner ---------- */
+.install-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1070;
+    background: linear-gradient(135deg, var(--primary-800), var(--primary));
+    box-shadow: 0 -8px 30px rgba(6, 52, 37, 0.4);
+    transform: translateY(110%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 14px 0;
+}
+
+.install-banner.show {
+    transform: translateY(0);
+}
+
+.install-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.install-banner-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+}
+
+.install-banner-text i {
+    font-size: 1.8rem;
+    color: var(--gold-soft);
+}
+
+.install-banner-text strong {
+    display: block;
+    font-size: 0.95rem;
+}
+
+.install-banner-text small {
+    display: block;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.install-banner-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.install-banner-actions .btn-sm {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+}
+
+.install-banner-actions .btn-dp-ghost {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
+.install-banner-actions .btn-dp-ghost:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+    color: #fff;
+}
+
+@media (max-width: 575.98px) {
+    .install-banner-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .install-banner-text {
+        flex-direction: column;
+    }
+}
+
+/* ---------- 21. Salah Reminder Page ---------- */
+.prayer-location-icon {
+    width: 80px;
+    height: 80px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(14, 107, 69, 0.1);
+    margin-bottom: 12px;
+}
+
+.prayer-location-icon i {
+    font-size: 2rem;
+    color: var(--primary);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.prayer-location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    border: 1.5px solid var(--gold-soft);
+    color: var(--primary);
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.92rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.prayer-location-badge i {
+    color: var(--gold);
+}
+
+.prayer-date-hijri {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(120deg, #fbf3dd, #f4ead0);
+    border: 1px solid var(--gold-soft);
+    color: var(--primary-700);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.next-prayer-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.next-prayer-name {
+    font-size: 2.2rem;
+    color: var(--primary-800);
+    margin-bottom: 2px;
+}
+
+.next-prayer-arabic {
+    font-family: var(--font-arabic);
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.next-prayer-countdown {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: 2px;
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(120deg, var(--primary), var(--primary-700));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.prayer-time-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.prayer-time-row:hover {
+    background: rgba(14, 107, 69, 0.03);
+}
+
+.prayer-time-row-next {
+    background: linear-gradient(120deg, #f0faf5, #e8f6ef);
+    border-color: rgba(14, 107, 69, 0.2);
+}
+
+.prayer-time-row-past {
+    opacity: 0.55;
+}
+
+.prayer-time-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.prayer-time-icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: rgba(14, 107, 69, 0.09);
+    color: var(--primary);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.prayer-time-row-next .prayer-time-icon {
+    background: var(--primary);
+    color: #fff;
+}
+
+.prayer-time-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.prayer-time-info p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+.prayer-time-value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.prayer-loading {
+    padding: 60px 20px;
+}
+
+.prayer-table th {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.prayer-table td {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* Notification toggle */
+.prayer-toggle {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.prayer-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.prayer-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 26px;
+    transition: var(--transition);
+}
+
+.prayer-toggle-slider::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.prayer-toggle input:checked + .prayer-toggle-slider {
+    background: var(--primary);
+}
+
+.prayer-toggle input:checked + .prayer-toggle-slider::before {
+    transform: translateX(22px);
+}
+
+/* ---------- 22. Download page ---------- */
+.download-icon {
+    width: 80px;
+    height: 80px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.android-icon {
+    background: rgba(61, 220, 132, 0.12);
+    color: #3ddc84;
+}
+
+.ios-icon {
+    background: rgba(0, 0, 0, 0.06);
+    color: #333;
+}
+
+.desktop-icon {
+    background: rgba(14, 107, 69, 0.1);
+    color: var(--primary);
+}
+
+.install-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.install-step .step-num {
+    flex-shrink: 0;
+}
+
 /* ---------- 19. Responsive ---------- */
 @media (max-width: 991.98px) {
     .contact-panel {
