@@ -1,4 +1,4 @@
-const CACHE_NAME = "deenpoint-v3";
+const CACHE_NAME = "deenpoint-v4";
 const BASE = self.registration.scope.replace(/\/$/, "");
 const ASSETS = [
   "",
@@ -12,6 +12,7 @@ const ASSETS = [
   "/download.html",
   "/css/style.css",
   "/css/salah.css",
+  "/css/mobile-app.css",
   "/js/main.js",
   "/js/prayer.js",
   "/js/notifications.js",

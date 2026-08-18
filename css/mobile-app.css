@@ -499,6 +499,73 @@
     /* ---------- 23. Install Banner Mobile ---------- */
     .install-banner {
         bottom: var(--tab-total) !important;
+        z-index: 1075 !important;
+    }
+
+    .install-banner.show {
+        transform: translateY(0) !important;
+    }
+
+    .install-banner-inner {
+        padding: 4px 0 !important;
+    }
+
+    .install-banner-text {
+        font-size: 0.85rem !important;
+    }
+
+    .install-banner-text strong {
+        font-size: 0.88rem !important;
+    }
+
+    .install-banner-text small {
+        font-size: 0.72rem !important;
+    }
+
+    .install-banner-actions .btn-sm {
+        padding: 6px 14px !important;
+        font-size: 0.78rem !important;
+    }
+
+    /* iOS install info sheet */
+    .ios-install-sheet {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .ios-install-sheet .ios-step {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-align: left;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .ios-install-sheet .ios-step:last-child {
+        border-bottom: none;
+    }
+
+    .ios-install-sheet .ios-step-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+    }
+
+    .ios-install-sheet .ios-step-text {
+        font-size: 0.88rem;
+        color: var(--ink);
+    }
+
+    .ios-install-sheet .ios-step-text strong {
+        color: var(--primary);
     }
 
     /* ---------- 24. Card Styles Mobile ---------- */

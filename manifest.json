@@ -11,6 +11,20 @@
   "scope": "./",
   "lang": "en",
   "categories": ["education", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Open Quran",
+      "short_name": "Quran",
+      "url": "./quran.html",
+      "icons": [{ "src": "images/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Salah Reminder",
+      "short_name": "Salah",
+      "url": "./salah-reminder.html",
+      "icons": [{ "src": "images/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
   "icons": [
     {
       "src": "images/icon-192.png",
@@ -31,6 +45,21 @@
       "purpose": "maskable"
     }
   ],
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "DeenPoint Dashboard"
+    },
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "DeenPoint Mobile App"
+    }
+  ],
   "prefer_related_applications": false
 }
