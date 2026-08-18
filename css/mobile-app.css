@@ -788,8 +788,7 @@
 @media (min-width: 992px) {
     .bottom-tab-bar,
     .app-header,
-    .app-status-bar,
-    .app-content {
+    .app-status-bar {
         display: none !important;
     }
 }
