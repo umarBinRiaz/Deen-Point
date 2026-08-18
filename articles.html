@@ -24,9 +24,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-app.css">
 </head>
 
 <body>
+
+    <!-- Mobile App Header -->
+    <div class="app-status-bar"></div>
+    <header class="app-header">
+        <a class="app-header-brand" href="index.html">
+            <span class="brand-icon"><i class="fa-solid fa-kaaba"></i></span>
+            DeenPoint
+        </a>
+        <div class="app-header-actions">
+            <button class="app-header-btn" onclick="window.location.href='quran.html'" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <button class="app-header-btn" onclick="window.location.href='salah-reminder.html'" aria-label="Notifications">
+                <i class="fa-solid fa-bell"></i>
+            </button>
+        </div>
+    </header>
 
     <nav class="navbar navbar-expand-lg dp-navbar">
         <div class="container-dp">
@@ -61,6 +79,7 @@
         </div>
     </nav>
 
+    <div class="app-content page-enter">
     <header class="page-hero">
         <div class="container-dp">
             <div class="breadcrumb-dp"><a href="index.html">Home</a> <i class="fa-solid fa-angle-right"></i>
@@ -108,6 +127,8 @@
 
         </div>
     </section>
+
+    </div><!-- .app-content -->
 
     <footer class="dp-footer">
         <div class="container-dp">
@@ -251,6 +272,32 @@
         const hashMatch = location.hash.match(/^#a(\d+)$/);
         if (hashMatch) openReader(Number(hashMatch[1]));
     </script>
+
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="bottom-tab-bar" role="navigation" aria-label="Main navigation">
+        <div class="tab-bar-inner">
+            <a href="index.html" class="tab-item" aria-label="Home">
+                <i class="fa-solid fa-house"></i>
+                <span class="tab-label">Home</span>
+            </a>
+            <a href="quran.html" class="tab-item" aria-label="Quran">
+                <i class="fa-solid fa-book-quran"></i>
+                <span class="tab-label">Quran</span>
+            </a>
+            <a href="hadith.html" class="tab-item" aria-label="Hadith">
+                <i class="fa-solid fa-scroll"></i>
+                <span class="tab-label">Hadith</span>
+            </a>
+            <a href="dua.html" class="tab-item" aria-label="Duas">
+                <i class="fa-solid fa-hands-praying"></i>
+                <span class="tab-label">Duas</span>
+            </a>
+            <a href="salah-reminder.html" class="tab-item" aria-label="Salah">
+                <i class="fa-solid fa-mosque"></i>
+                <span class="tab-label">Salah</span>
+            </a>
+        </div>
+    </nav>
 </body>
 
 </html>

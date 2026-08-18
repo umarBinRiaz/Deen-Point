@@ -2178,4 +2178,20 @@ p {
     .surah-card {
         padding: 18px;
     }
+
+    /* Mobile app footer hidden */
+    .dp-footer {
+        display: none;
+    }
+
+    /* Mobile app smooth scrolling */
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Prevent text selection on interactive elements */
+    .tab-item, .btn-dp, .surah-play, .surah-read {
+        -webkit-user-select: none;
+        user-select: none;
+    }
 }
